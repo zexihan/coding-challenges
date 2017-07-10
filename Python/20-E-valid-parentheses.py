@@ -1,5 +1,6 @@
-# Time:
-# Space:
+# Time: O(n)
+# Space: O(n)
+# First in, last out -> Stack
 class Solution:
     def isValid(self, s):
         """

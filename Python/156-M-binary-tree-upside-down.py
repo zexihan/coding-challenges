@@ -45,7 +45,6 @@ class Solution_1:
         return newRoot
 
 """
-??? converted from java, suspicious result ???
 Recursion:
     Identical Subproblem
     Lower Level First
@@ -54,13 +53,13 @@ Recursion:
 # Spac: O(n)
 class Solution_2:
     def upsideDownBinaryTree(self, root): 
-        if not root or not root.left:
+        if (not root) or (not root.left):
             return root
         # assumen all lower levels are handled
         newRoot = self.upsideDownBinaryTree(root.left)
 
         # handle current level
-        root.left.left.left = root.right
+        root.left.left = root.right
         root.left.right = root
 
         root.left = None
@@ -68,7 +67,7 @@ class Solution_2:
 
         return newRoot
 
-# recursion, same as above, suspicious result
+# recursion with helper hunction, same as above
 class Solution_3:
     def upsideDownBinaryTree(self, root):
         return self.upsideDownBinaryTreeRecu(root, None)
@@ -76,7 +75,6 @@ class Solution_3:
     def upsideDownBinaryTreeRecu(self, p, parent):
         if p is None:
             return parent
-        
         root = self.upsideDownBinaryTreeRecu(p.left, p)
         if parent:
             p.left = parent.right
@@ -86,15 +84,19 @@ class Solution_3:
         
         return root
 
+
 if __name__ == "__main__":
     new_1 = Solution_1()
-    new_2 = Solution_2()
-    new_3 = Solution_3()
+    # new_2 = Solution_2()
+    # new_3 = Solution_3()
+
     root = TreeNode(1)
     root.left, root.right = TreeNode(2), TreeNode(3)
     root.left.left, root.left.right = TreeNode(4), TreeNode(5)
+    
     print(new_1.upsideDownBinaryTree(root).val)
-    print(new_2.upsideDownBinaryTree(root).val)
-    print(new_3.upsideDownBinaryTree(root).val)
+    # print(new_2.upsideDownBinaryTree(root).val)
+    # print(new_3.upsideDownBinaryTree(root).val)
+
 
 

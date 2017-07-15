@@ -20,42 +20,28 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        if not nums:
-            return -1
-
         start = 0
         end = len(nums) - 1
 
-        if start == end:
-            if nums[start] == target:
-                return 0
-            else:
-                return -1
-
-        while start + 1 < end:
-            mid = start + (end - start) // 2
+        while start <= end:
+            mid = (start + end) // 2
             
             if nums[mid] == target:
                 return mid
             # step 1: locate nums[mid]
-            if nums[mid] > nums[start]:
+            if nums[mid] >= nums[start]:
                 # step 2: locate target
                 if target >= nums[start] and target < nums[mid]: # mid in 1 and target in 1
-                    end = mid
+                    end = mid - 1
                 else: # mid in 1 and target in 2
-                    start = mid
+                    start = mid + 1
             else: # elif: nums[mid] < nums[start]
-                if target < nums[end] and target > nums[mid]: # mid in 2 and target in 2
-                    start = mid
+                if target <= nums[end] and target > nums[mid]: # mid in 2 and target in 2
+                    start = mid + 1
                 else: # mid in 2 and target in 1
-                    end = mid
+                    end = mid - 1
             # else: # follow up: what if duplicates?
             #     start += 1
-
-            if nums[start] == target:
-                return start
-            if nums[end] == target:
-                return end
 
         return -1
 
@@ -65,3 +51,5 @@ if __name__ == "__main__":
     print(new.search([6, 7, 8, 0, 1, 3, 5], 1))
     print(new.search([1], 1))
     print(new.search([1], 0))
+    print(new.search([1 ,3], 1))
+    print(new.search([1 ,3], 2))

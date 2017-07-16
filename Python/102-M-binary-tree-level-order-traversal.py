@@ -44,9 +44,9 @@ class Solution_2(object):
             for i in range(len(queue)):
                 cur = queue.popleft()
                 tmpAns.append(cur.val)
-                if cur.left != None:
+                if cur.left:
                     queue.append(cur.left)
-                if cur.right != None:
+                if cur.right:
                     queue.append(cur.right)       
             ans.append(tmpAns)
         return ans

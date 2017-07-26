@@ -9,11 +9,10 @@ class Solution(object):
         """
         p, q, k = m - 1, n - 1, m + n - 1
         while p >= 0 and q >= 0:
-            if nums1[p] >= nums1[q]:
+            if nums1[p] > nums2[q]:
                 nums1[k] = nums1[p]
                 p, k = p - 1, k - 1
             else:
                 nums1[k] = nums2[q]
                 q, k = q - 1, k - 1
-        if q > 0:
-            nums1[:q] = nums2[:q]
+        nums1[:q + 1] = nums2[:q + 1]

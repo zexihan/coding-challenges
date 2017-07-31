@@ -56,11 +56,12 @@ class Solution_2:
     def upsideDownBinaryTree(self, root): 
         if not root or not root.left:
             return root
+        
         # assumen all lower levels are handled
         newRoot = self.upsideDownBinaryTree(root.left)
-
+        
         # handle current level
-        root.left.left.left = root.right
+        root.left.left = root.right
         root.left.right = root
 
         root.left = None
@@ -93,8 +94,10 @@ if __name__ == "__main__":
     root = TreeNode(1)
     root.left, root.right = TreeNode(2), TreeNode(3)
     root.left.left, root.left.right = TreeNode(4), TreeNode(5)
-    print(new_1.upsideDownBinaryTree(root).val)
-    print(new_2.upsideDownBinaryTree(root).val)
-    print(new_3.upsideDownBinaryTree(root).val)
+    # print root.val
+    # print(new_1.upsideDownBinaryTree(root).val)
+    
+    # print(new_2.upsideDownBinaryTree(root).val)
+    # print(new_3.upsideDownBinaryTree(root).val)
 
 

@@ -5,34 +5,12 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
-# Recursion and DFS
-class Solution_1(object):
-    def preorder(self, root, level, ans):
-        if root:
-            if len(ans) < level + 1:
-                ans.append([])
-            ans[level].append(root.val)
-            self.preorder(root.left, level + 1, ans)
-            self.preorder(root.right, level + 1, ans)
-    
-    def levelOrder(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[List[int]]
-        """
-        ans = []
-        self.preorder(root, 0, ans)
-        return ans
-
-# Time: O(n)
-# Space: O(n)
-# Queue, Iteration and BFS
 from collections import deque
-class Solution_2(object):
-    def levelOrder(self, root):
+class Solution(object):
+    def averageOfLevels(self, root):
         """
         :type root: TreeNode
-        :rtype: List[List[int]]
+        :rtype: List[float]
         """
         if not root:
             return []
@@ -44,19 +22,17 @@ class Solution_2(object):
             for i in range(len(queue)):
                 cur = queue.popleft()
                 tmpAns.append(cur.val)
-                if cur.left:
+                if cur.left != None:
                     queue.append(cur.left)
-                if cur.right:
+                if cur.right != None:
                     queue.append(cur.right)       
-            ans.append(tmpAns)
+            ans.append(sum(tmpAns) / len(tmpAns))
         return ans
 
 
 if __name__ == "__main__":
-    new_1 = Solution_1()
-    new_2 = Solution_2()
+    new = Solution()
     root = TreeNode(3)
     root.left, root.right = TreeNode(9), TreeNode(20)
     root.right.left, root.right.right = TreeNode(15), TreeNode(7)
-    print(new_1.levelOrder(root))
-    print(new_2.levelOrder(root))
+    print(new.averageOfLevels(root))

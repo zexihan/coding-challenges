@@ -4,18 +4,21 @@
 import util.Constructor;
 import util.Displayer;
 import util.ListNode;
-import util.Solution;
 public class Launcher {
-    int[] array = {1,2,2,3,5};
+    int[] array = {1,2,2,0,0};
 
     public static void main(String args[]){
         Launcher lan = new Launcher();
         lan.runSolution();
     }
     public void runSolution(){
-        ListNode head = Constructor.listConstructor(array);
-        Solution_83 sl = new Solution_83();
-        sl.deleteDuplicate_recursive(head);
-        Displayer.ListDisplay(head);
+        Solution_75 sl = new Solution_75();
+
+        sl.sortColors(array);
+        Displayer.ArrayDisplay(array);
+
+        //ListNode head = Constructor.listConstructor(array);
+        //ListNode new_head = sl.sortColors(head);
+        //Displayer.ListDisplay(new_head);
     }
 }

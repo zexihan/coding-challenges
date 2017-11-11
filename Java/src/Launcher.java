@@ -13,9 +13,15 @@ public class Launcher {
         lan.runSolution();
     }
     public void runSolution(){
-        Solution sl = new Solution_109();
-        sl = (Solution_109) sl;
-        
+        Solution_155 sl = new Solution_155();
+        sl.push(-2);
+        sl.push(0);
+        sl.push(3);
+        sl.pop();
+        sl.pop();
+        sl.pop();
+        //System.out.println(sl.getMin());
+
 
 //        sl.sortColors(array);
 //        Displayer.ArrayDisplay(array);

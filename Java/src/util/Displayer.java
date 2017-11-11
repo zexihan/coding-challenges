@@ -13,6 +13,10 @@ public class Displayer {
         System.out.println();
     }
 
+    public static void TreeDisplay(TreeNode root){
+        
+    }
+
     public static void ArrayDisplay(int[] array){
         for(int val:array){
             System.out.print(val);

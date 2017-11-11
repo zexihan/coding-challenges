@@ -3,7 +3,7 @@
  */
 public class Solution_75 {
     public void sortColors(int[] nums){
-        if (nums.length < 1||nums == null) return;
+        if (nums.length < 1||nums == null) throw new NullPointerException("null pointer");
         int left = 0;
         int right = nums.length - 1;
         int cur = 0;

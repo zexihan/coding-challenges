@@ -5,39 +5,37 @@
 #         self.left = None
 #         self.right = None
 
-# Recursive
+# Non-recursive Preorder Traversal
 class Solution_1(object):
     def flatten(self, root):
         """
         :type root: TreeNode
         :rtype: void Do not return anything, modify root in-place instead.
         """
-        if not root:
-            return
-        self.prev = root
-        self.flatten(root.left)
+        pointer = dummy = TreeNode(None)
+        stack = [root]
+        while stack:
+            top = stack.pop()
+            if not top: continue
+            stack.append(top.right)
+            stack.append(top.left)
+            pointer.right = top
+            pointer.left = None
+            pointer = top
 
-        temp = root.right
-        root.right, root.left = root.left, None
-        self.prev.right = temp
-
-        self.flatten(temp)
-
-# Iterative
+# Recursive Postorder Traversal
 class Solution_2(object):
     def flatten(self, root):
         """
         :type root: TreeNode
         :rtype: void Do not return anything, modify root in-place instead.
         """
-        while root:
-            if root.left and root.right:
-                t = root.left
-                while t.right:
-                    t = t.right
-                t.right = root.right
-            
-            if root.left:
-                root.right = root.left
+        self.pointer = None
+        def traverse(root):
+            if not root: return
+            traverse(root.right)
+            traverse(root.left)
+            root.right = self.pointer
             root.left = None
-            root = root.right
+            self.pointer = root
+        traverse(root)

@@ -7,25 +7,28 @@ e.g. 14532
 2. 由于partition之后除了5没有比4大的数，所以45交换为54，即15432。
 3. 然后将partition之后的元素逆序排列，即432排列为234，则最后输出的next permutation为15234。
 """
+# Time: O(n)
+# Space: O(1)
 class Solution(object):
     def nextPermutation(self, nums):
         """
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        if len(nums) > 1:
-            partition = -1
-            # step 1
-            for i in range(len(nums) - 2, -1, -1):
-                if nums[i] < nums[i + 1]:
-                    partition = i
-                    break
-            # step 2 & 3
-            if partition == -1:
-                nums.reverse()
-            else:
-                for i in range(len(nums) - 1, partition, -1):
-                    if nums[i] > nums[partition]:
-                        nums[i], nums[partition] = nums[partition], nums[i]
-                        break
-                nums[partition + 1 : len (nums)] = nums[partition + 1 : len(nums)][::-1]
+        i = len(nums) - 2
+        while i >= 0 and nums[i] >= nums[i + 1]:
+            i -= 1
+
+        if i >= 0:
+            j = len(nums) - 1
+            while j >= 0 and nums[i] >= nums[j]:
+                j -= 1
+            nums[i], nums[j] = nums[j], nums[i]
+        self.reverse(nums, i + 1)
+
+    def reverse(self, nums, start):
+        i, j= start, len(nums) - 1
+        while i < j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1

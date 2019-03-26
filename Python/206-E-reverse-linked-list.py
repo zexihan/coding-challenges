@@ -11,15 +11,15 @@ class Solution_1:
         :type head: ListNode
         :rtype: ListNode
         """
-        prev = next = None
+        if not head or not head.next:
+            return head
+        prev =  None
         curr = head
-        
         while curr:
-            next = curr.next
+            nxt = curr.next
             curr.next = prev
             prev = curr
-            curr = next
-            
+            curr = nxt
         return prev
 
 # Recursive
@@ -29,8 +29,9 @@ class Solution_2:
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head or not head.next: return head
-        p = self.reverseList(head.next)
+        if not head or not head.next: 
+            return head
+        new_head = self.reverseList(head.next)
         head.next.next = head
         head.next = None
-        return p
+        return new_head

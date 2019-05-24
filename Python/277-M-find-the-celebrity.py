@@ -4,7 +4,7 @@
 # @return a boolean, whether a knows b
 # def knows(a, b):
 
-class Solution_1():
+class Solution():
     def findCelebrity(self, n):
         """
         :type n: int
@@ -30,20 +30,3 @@ class Solution_1():
                 return -1
 
         return candidate
-
-class Solution_2(object):
-    def findCelebrity(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        # find the only possible candidate
-        k = 0
-        for i in range(1, n):
-            k = k if knows(i, k) else i
-        
-        # verify whether the candidate is the celebrity
-        for i in range(n):
-            if i != k and (knows(k, i) or not knows(i, k)):
-                return -1
-        return k

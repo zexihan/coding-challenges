@@ -1,20 +1,20 @@
 class Solution:
     def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[str]:
-        def getRange(lower, upper):
-            if lower == upper:
-                return "{}".format(lower)
-            else:
-                return "{}->{}".format(lower, upper)
-        ranges = []
+        res = []
+        if len(nums) == 0:
+            res.append(self.getRange(lower, upper))
+            return res
         pre = lower - 1
-        for i in range(len(nums) + 1):
-            if i == len(nums):
-                cur = upper + 1
-            else:
-                cur = nums[i]
-            if cur - pre >= 2:
-                ranges.append(getRange(pre + 1, cur - 1))
-            
+        for cur in nums:
+            if pre != cur and pre + 1 != cur:
+                res.append(self.getRange(pre + 1, cur - 1))
             pre = cur
+        if nums[-1] < upper:
+            res.append(self.getRange(nums[-1] + 1, upper))
+        return res
 
-        return ranges
+    def getRange(self, lower, upper):
+        if lower == upper:
+            return "{}".format(lower)
+        else:
+            return "{}->{}".format(lower, upper)

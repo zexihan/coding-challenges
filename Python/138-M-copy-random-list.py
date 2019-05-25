@@ -1,81 +1,61 @@
-# Definition for singly-linked list with a random pointer.
-class RandomListNode(object):
-    def __init__(self, x):
-        self.label = x
-        self.next = None
-        self.random = None
-
-# Time: O(n)
-# Space: O(n)
-# three pass
-class Solution_1(object):
-    def copyRandomList(self, head):
-        """
-        :type head: RandomListNode
-        :rtype: RandomListNode
-        """
-        if head == None: 
-            return None
-        # first iteration to duplicate original nodes to the list
-        # 1->2->3 to 1->1->2->2->3->3
-        tmp = head
-        while tmp:
-            newNode = RandomListNode(tmp.label)
-            newNode.next = tmp.next
-            tmp.next = newNode
-            tmp = tmp.next.next
-        # second iteration to copy random pointers
-        tmp = head
-        while tmp:
-            if tmp.random:
-                tmp.next.random = tmp.random.next
-            tmp = tmp.next.next
-        # third iteration to separate old and new lists
-        newhead = head.next
-        pold = head
-        pnew = newhead
-        while pnew.next:
-            pold.next = pnew.next
-            pold = pold.next
-            pnew.next = pold.next
-            pnew = pnew.next
-        pold.next = None
-        pnew.next = None
-        return newhead
-
-
-# Time: O(n)
-# Space: O(n)
-# one pass
-class Solution_2(object):
-    def copyRandomList(self, head):
-        if head == None: 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, next, random):
+        self.val = val
+        self.next = next
+        self.random = random
+"""
+"""
+two pass
+Time: O(n)
+Space: O(n)
+"""
+class Solution_1:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head:
             return None
 
-        dict = {}
-        cur = head
-        while cur:
-            # create nodes of cur, next, ran
-            if id(cur) not in dict.keys():
-                curCopy = RandomListNode(cur.label)
-                dict[id(cur)] = curCopy
+        myMap = {}
+        nHead = Node(head.val, None, None)
+        myMap[head] = nHead
+        p, q = head, nHead
+        while p:
+            q.random = p.random
+            if p.next:
+                q.next = Node(p.next.val, None, None)
+                myMap[p.next] = q.next
+            p = p.next
+            q = q.next
 
-            if cur.next and id(cur.next) not in dict.keys():
-                nextCopy = RandomListNode(cur.next.label)
-                dict[id(cur.next)] = nextCopy
+        p = nHead
+        while p:
+            if p.random:
+                p.random = myMap[p.random]
+            p = p.next
+        return nHead
 
-            if cur.random and id(cur.random) not in dict.keys():
-                randomCopy = RandomListNode(cur.random.label)
-                dict[id(cur.random)] = randomCopy
 
-            # connect curCopy with nextCopy, ranCopy
-            if cur.next:
-                dict[id(cur)].next = dict[id(cur.next)]
+"""
+recursive
+Time: O(n)
+Space: O(n)
+"""
+class Solution_2:
+    def __init__(self):
+        self.visitedHash = {}
 
-            if cur.random:
-                dict[id(cur)].random = dict[id(cur.random)]
-
-            # next round
-            cur = cur.next
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head:
+            return None
         
-        return dict[id(head)]
+        if head in self.visitedHash:
+            return self.visitedHash[head]
+        
+        node = Node(head.val, None, None)
+        self.visitedHash[head] = node
+
+        node.next = self.copyRandomList(head.next)
+        node.random = self.copyRandomList(head.random)
+
+        return node

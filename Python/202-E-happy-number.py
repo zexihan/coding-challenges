@@ -1,30 +1,29 @@
-# Time: O(1) (O(810))
+"""
+Time: O(n)
+Space: O(n)
+"""
 class Solution_1(object):
-    def isHappy(self, n):
-        """
-        :type n: int
-        :rtype: bool
-        """
-        cache = []
-        while n not in cache:
-            cache.append(n)
-            result = 0
+    def isHappy(self, n: int) -> bool:
+        cache = set()
+        while n != 1:
+            s = 0
             while n:
-                result += (n % 10)**2
+                s += (n % 10) ** 2
                 n //= 10
-            if result == 1:
-                    return True
-            n = result
-        return False
+            if s in cache:
+                return False
+            cache.add(s)
+            n = s
+        return True
 
-# Space: O(1)
-# Floyd Cycle detection algorithm
-class Solution_2(object):
-    def isHappy(self, n):
-        """
-        :type n: int
-        :rtype: bool
-        """
+"""
+Floyd Cycle detection algorithm
+faster
+Time: O(n)
+Space: O(1)
+"""
+class Solution_2:
+    def isHappy(self, n: int) -> bool:
         slow = fast = n
         while True:
             slow = self.transform(slow)
@@ -35,14 +34,12 @@ class Solution_2(object):
         if slow == 1: return True
         else: return False
 
-    
     def transform(self, n):
         result = 0
         while n:
             result += (n % 10)**2
-            n /= 10
+            n //= 10
         return result
 
 if __name__ == "__main__":
-    new = Solution_1()
-    print(new.isHappy(1))
+    print(Solution_1().isHappy(1))

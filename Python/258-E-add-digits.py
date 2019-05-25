@@ -1,9 +1,8 @@
+"""
+iterative
+"""
 class Solution_1:
-    def addDigits(self, num):
-        """
-        :type num: int
-        :rtype: int
-        """     
+    def addDigits(self, num: int) -> int:
         while num > 9:
             s = 0
             while num:
@@ -12,12 +11,15 @@ class Solution_1:
             num = s
         return num
 
+"""
+recursive
+"""
 class Solution_2:
-    """
-    :type num: int
-    :rtype: int
-    """ 
-    def addDigits(self, num):
-        if num == 0:
-            return 0
-        return (num - 1) % 9 + 1
+    def addDigits(self, num: int) -> int:
+        if len(str(num)) == 1:
+            return num
+        elif len(str(num)) == 2:
+            return self.addDigits(int(str(num)[0]) + int(str(num)[1]))
+        else:
+            mid = len(str(num)) // 2
+            return self.addDigits(self.addDigits(int(str(num)[:mid])) + self.addDigits(int(str(num)[mid:])))

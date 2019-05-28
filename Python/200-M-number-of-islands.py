@@ -1,18 +1,100 @@
-# Time: O(n^2) 275ms
-# Space: O(1) 
+"""
+BFS
+Time: O(MN)
+Space: O(min(M, N))
+"""
+import collections
+class Solution_1:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid:
+            return 0
+        
+        n = len(grid)
+        m = len(grid[0])
+        res = 0
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == '1':
+                    res += 1
+                    q = collections.deque()
+                    q.append((i, j))
+                    grid[i][j] = '0'
+                    while q:
+                        x, y = q.popleft()
+                        for dx, dy in directions:
+                            nx, ny = x + dx, y + dy
+                            if nx < 0 or nx >= n or ny < 0 or ny >= m:
+                                continue
+                            if grid[nx][ny] == '1':
+                                grid[nx][ny] = '0'
+                                q.append((nx, ny))
+        return res
+
+
+"""
+Union Find
+Time: O(MN)
+Space: O(MN)
+"""
+class Solution_2:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid:
+            return 0
+        
+        n = len(grid)
+        m = len(grid[0])
+        self.res = 0
+        self.parent = {}
+        for x in range(n):
+            for y in range(m):
+                if grid[x][y] == '1':
+                    self.parent[(x, y)] = (x, y)
+        
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        for x in range(n):
+            for y in range(m):
+                if grid[x][y] == '1':
+                    self.res += 1
+                    for dx, dy in directions:
+                        nx, ny = x + dx, y + dy
+                        if nx < 0 or nx >= n or ny < 0 or ny >= m:
+                            continue
+                        if grid[nx][ny] == '1':
+                            self.union((nx, ny), (x, y))
+        return self.res
+    
+    def union(self, point_a, point_b):
+        root_a = self.find(point_a)
+        root_b = self.find(point_b)
+        if root_a != root_b:
+            self.parent[root_a] = root_b
+            self.res -= 1
+    
+    def find(self, point):
+        path = []
+        while point != self.parent[point]:
+            path.append(point)
+            point = self.parent[point]
+
+        for p in path:
+            self.parent[p] = point
+
+        return point
+        
+
 """
 DFS
 Find an entrance of an island
 Remove the island using DFS
 Counting the number of removed islands
+Time: O(MN)
+Space: O(MN) 
 """
-class Solution_1(object):
-    def numIslands(self, grid):
-        """
-        :type grid: List[List[str]]
-        :rtype: int
-        """
-        if not grid: return 0
+class Solution_3:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid: 
+            return 0
 
         count = 0
         row, col = len(grid), len(grid[0])
@@ -34,46 +116,3 @@ class Solution_1(object):
     
     def isValid(self, i, j, x, y, row, col):
         return abs(i) != abs(j) and x + i >=0 and x + i < row and y + j >=0 and y + j < col
-
-# Time: 82ms
-# BFS
-class Solution_2(object):
-    def numIslands(self, grid):
-        """
-        :type grid: List[List[str]]
-        :rtype: int
-        """
-        if not grid: return 0
-        
-        m, n = len(grid), len(grid[0])
-        count = 0
-        
-        for i in range(m):
-            for j in range(n):
-                if grid[i][j] == '0':
-                    continue
-                else:
-                    count += 1
-                    stack = [[i, j]]
-                    
-                    while len(stack) != 0:
-                        p, q = stack.pop()
-                        
-                        if p >= 1 and grid[p-1][q] == '1':
-                            stack.append([p-1,q])
-                        if p < m-1 and grid[p+1][q] == '1':
-                            stack.append([p+1,q])
-                        if q >= 1 and grid[p][q-1] == '1':
-                            stack.append([p, q-1])
-                        if q < n-1 and grid[p][q+1] == '1':
-                            stack.append([p, q+1])
-                        
-                        grid[p][q] = '0'
-        return count
-
-
-if __name__ == "__main__":
-    new_1 = Solution_1()
-    new_2 = Solution_2()
-    print(new_1.numIslands([['1','1','0','0','0'],['1','1','0','0','0'],['0','0','1','0','0'],['0','0','0','1','1']])) # 3
-    print(new_2.numIslands([['1','1','0','0','0'],['1','1','0','0','0'],['0','0','1','0','0'],['0','0','0','1','1']])) # 3

@@ -1,16 +1,12 @@
-class Solution(object):
-    def groupAnagrams(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: List[List[str]]
-        """
-        if strs is None:
-            return [[]]
-        map = {}
+"""
+Time: O(n)
+Space: O(1)
+"""
+import collections
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        map = collections.defaultdict(list)
         for s in strs:
-            ca = sorted(list(s))
-            keyStr = "".join(ca)
-            if keyStr not in map:
-                map[keyStr] = []
-            map[keyStr].append(s)
+            ss = "".join(sorted(s))
+            map[ss].append(s)
         return list(map.values())

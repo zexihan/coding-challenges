@@ -1,15 +1,11 @@
-# Time: O(nlogn)
-# Space: O(1)
 """
 Primitive idea:
 Sorting method
+Time: O(nlogn)
+Space: O(n)
 """
-class Solution_1(object):
-    def longestConsecutive(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+class Solution_1:
+    def longestConsecutive(self, nums: List[int]) -> int:
         if not nums:
             return 0
         
@@ -27,41 +23,37 @@ class Solution_1(object):
         return maxCount
 
 
-# Time: O(n)
-# Space: O(n)
 """
 Set method
 Put nums into set
 For each element of nums, find its lower and upper bound
+Time: O(n)
+Space: O(n)
 """
-class Solution_2(object):
-    def longestConsecutive(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        maxCount = 0
-        numSet = set(nums)
+class Solution_2:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
 
-        for n in nums:
-            curr = n
-            count = 0
-            # check upper bound
-            while curr in numSet:
-                numSet.remove(curr)
-                curr += 1
-                count += 1
-                
-            # check lower bound
-            curr = n - 1
-            while curr in numSet:
-                numSet.remove(curr)
-                curr -= 1
-                count += 1
-            
-            maxCount = max(count, maxCount)
-        
-        return maxCount
+        numSet = set(nums)
+        for item in nums:
+            numSet.add(item)
+
+        res = 0
+        for item in nums:
+            if item in numSet:
+                numSet.remove(item)
+
+                l = item - 1
+                r = item + 1
+                while l in numSet:
+                    numSet.remove(l)
+                    l -= 1
+                while r in numSet:
+                    numSet.remove(r)
+                    r += 1
+                res = max(res, r - l - 1)
+        return res
             
 
 if __name__ == "__main__":

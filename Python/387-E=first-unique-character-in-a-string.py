@@ -1,15 +1,13 @@
-# Time: O(n)
-# Space: O(1)
-class Solution(object):
-    def firstUniqChar(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+"""
+Time: O(n)
+Space: O(1)
+"""
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
         freq = [0] * 26
-        for i in range(len(s)):
-            freq[ord(s[i]) - ord("a")] += 1
+        for c in s:
+            freq[ord(c) - ord("a")] += 1
         for i in range(len(s)):
             if freq[ord(s[i]) - ord("a")] == 1:
-                return i;
+                return i
         return -1

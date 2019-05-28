@@ -1,14 +1,13 @@
+"""
+Time: O(n)
+Space: O(1)
+"""
 class Solution(object):
-    def isAnagram(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        map_s = {}
-        map_t = {}
-        for chr in list(s):
-            map_s[chr] = map_s.get(chr,0) + 1
-        for chr in list(t):
-            map_t[chr] = map_t.get(chr,0) + 1
-        return map_s == map_t
+    def isAnagram(self, s: str, t: str) -> bool:
+        cntS = [0] * 256
+        cntT = [0] * 256
+        for c in s:
+            cntS[ord(c)] += 1
+        for c in t:
+            cntT[ord(c)] += 1
+        return cntS == cntT

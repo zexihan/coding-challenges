@@ -1,5 +1,6 @@
 """
 dfs + pruning
+two types of redundancy
 """
 import collections
 class Solution:
@@ -15,7 +16,7 @@ class Solution:
         for word in words:
             self.dfs(word, 1, n, matrix, res, prefixDict)
         return res
-    
+
     def dfs(self, word, line, n, matrix, res, prefixDict):
         matrix.append(word)
         if line == n:
@@ -23,5 +24,17 @@ class Solution:
         else:
             prefix = ''.join(matrix[x][line] for x in range(line))
             for word in prefixDict[prefix]:
+                if not self.checkPrefix(line, n, word, matrix, prefixDict):
+                    continue
                 self.dfs(word, line + 1, n, matrix, res, prefixDict)
         matrix.pop()
+
+    def checkPrefix(self, line, n, nextWord, matrix, prefixDict):
+        for i in range(line + 1, n):
+            prefix = ""
+            for item in matrix:
+                prefix += item[i]
+            prefix += nextWord[i]
+            if prefix not in prefixDict:
+                return False
+        return True

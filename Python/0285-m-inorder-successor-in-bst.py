@@ -5,43 +5,25 @@
 #         self.left = None
 #         self.right = None
 
-# Time: O(n)
-# Space: O(1)
-class Solution_1(object):
-    def inorderSuccessor(self, root, p):
-        """
-        :type root: TreeNode
-        :type p: TreeNode
-        :rtype: TreeNode
-        """
-        successor = None
-        while root != None and root.val != p.val:
-            if root.val > p.val:
-                successor = root
-                root = root.left
-            else:
-                root = root.right
-        
-        if root == None:
+"""
+recursive
+Time: O(h) 
+balanced - O(logn), unbalanced - O(n)
+"""
+class Solution_1:
+    def inorderSuccessor(self, root: 'TreeNode', p: 'TreeNode') -> 'TreeNode':
+        if not root or not p:
             return None
-        
-        if root.right == None:
-            return successor
-        
-        root = root.right
-        while root.left != None:
-            root = root.left
-        
-        return root
+        if root.val <= p.val: 
+            return self.inorderSuccessor(root.right, p)
+        else:
+            return self.inorderSuccessor(root.left, p) or root
 
-
-class Solution_2(object):
-    def inorderSuccessor(self, root, p):
-        """
-        :type root: TreeNode
-        :type p: TreeNode
-        :rtype: TreeNode
-        """
+"""
+iterative
+"""
+class Solution_2:
+    def inorderSuccessor(self, root: 'TreeNode', p: 'TreeNode') -> 'TreeNode':
         if root is None or p is None:
             return None
         
@@ -54,3 +36,4 @@ class Solution_2(object):
                 root = root.right
         
         return successor
+

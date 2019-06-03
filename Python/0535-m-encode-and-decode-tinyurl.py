@@ -1,4 +1,52 @@
-# Using Simple Counter
+"""
+Base 62
+"""
+class Codec:
+
+    def __init__(self):
+        self.letters = string.ascii_letters + string.digits
+        self.full_tiny = {}
+        self.tiny_full = {}
+        self.global_counter = 0
+
+    def encode(self, longUrl):
+        """Encodes a URL to a shortened URL.
+        
+        :type longUrl: str
+        :rtype: str
+        """
+        def decto62(dec):
+            res = ""
+            while 1:
+                res = self.letters[dec % 62] + res
+                dec //= 62
+                if not dec:
+                    break
+            return res
+
+        suffix = decto62(self.global_counter)
+        if longUrl not in self.full_tiny:
+            self.full_tiny[longUrl] = suffix
+            self.tiny_full[suffix] = longUrl
+            self.global_counter += 1
+        return "http://tinyurl.com/" + suffix
+    
+    def decode(self, shortUrl):
+        """Decodes a shortened URL to its original URL.
+        
+        :type shortUrl: str
+        :rtype: str
+        """
+        idx = shortUrl.split('/')[-1]
+        if idx in self.tiny_full:
+            return self.tiny_full[idx]
+        else:
+            return None
+        
+
+"""
+Using Simple Counter
+"""
 class Codec_1:
 
     def __init__(self):
@@ -6,25 +54,17 @@ class Codec_1:
         self.map = {}
         
     def encode(self, longUrl):
-        """Encodes a URL to a shortened URL.
-        
-        :type longUrl: str
-        :rtype: str
-        """
         self.map[self.i] = longUrl
         shortUrl = "http://tinyurl.com/" + str(self.i)
         self.i += 1
         return shortUrl 
         
     def decode(self, shortUrl):
-        """Decodes a shortened URL to its original URL.
-        
-        :type shortUrl: str
-        :rtype: str
-        """
         return self.map.get(int(shortUrl.replace("http://tinyurl.com/","")))
 
-# Variable-length Encoding        
+"""
+Variable-length Encoding        
+"""
 class Codec_2:
 
     def __init__(self):
@@ -50,8 +90,10 @@ class Codec_2:
 
     def decode(self, shortUrl):
         return self.map.get(shortUrl.replace("http://tinyurl.com/",""))
-        
-# Using hashcode
+
+"""
+Using hashcode
+"""
 # import hashlib
 class Codec_3:
 
@@ -67,7 +109,9 @@ class Codec_3:
     def decode(self, shortUrl):
         return self.map.get(int(shortUrl.replace("http://tinyurl.com/","")))
 
-# Random fixed-length encoding
+"""
+Random fixed-length encoding
+"""
 import random
 class Codec_4:
 

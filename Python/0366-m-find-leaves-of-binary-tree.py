@@ -10,17 +10,22 @@ dfs
 leaf的高度是 0
 The height of a node is also its index in the result list (res).
 """
+import collections
 class Solution:
     def findLeaves(self, root: TreeNode) -> List[List[int]]:
         res = []
-        self.dfs(root, res)
+        hash = collections.defaultdict(list)
+        maxH = self.dfs(root, hash)
+
+        for i in range(1, maxH + 1):
+            res.append(hash[i])
         return res
-    
-    def dfs(self, root, res):
-        if not root:
-            return -1
-        height = 1 + max(self.dfs(root.left, res), self.dfs(root.right, res))
-        if len(res) < height + 1:
-            res.append([])
-        res[height].append(root.val)
-        return height
+
+    def dfs(self, cur, hash):
+        if not cur:
+            return 0
+
+        h = max(self.dfs(cur.left, hash), self.dfs(cur.right, hash)) + 1
+        hash[h].append(cur.val)
+
+        return h

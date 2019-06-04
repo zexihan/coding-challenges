@@ -1,13 +1,14 @@
 """
 Base 62
 """
+import string
 class Codec:
 
     def __init__(self):
         self.letters = string.ascii_letters + string.digits
         self.full_tiny = {}
         self.tiny_full = {}
-        self.global_counter = 0
+        self.global_counter = 1
 
     def encode(self, longUrl):
         """Encodes a URL to a shortened URL.
@@ -15,13 +16,11 @@ class Codec:
         :type longUrl: str
         :rtype: str
         """
-        def decto62(dec):
+        def decto62(n):
             res = ""
-            while 1:
-                res = self.letters[dec % 62] + res
-                dec //= 62
-                if not dec:
-                    break
+            while n:
+                res = self.letters[n % 62] + res
+                n //= 62
             return res
 
         suffix = decto62(self.global_counter)
@@ -68,7 +67,7 @@ Variable-length Encoding
 class Codec_2:
 
     def __init__(self):
-        self.chars = "0123456789abcdefghijklmnopqrstuvwxyz"
+        self.chars = string.ascii_letters + string.digits
         self.count = 1
         self.map = {}
 
@@ -116,7 +115,7 @@ import random
 class Codec_4:
 
     def __init__(self):
-        self.alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        self.alphabet = string.ascii_letters + string.digits
         self.map = {}
         self.key = self.getRand()
 
@@ -138,7 +137,7 @@ class Codec_4:
 
 
 # Your Codec object will be instantiated and called as such:
-codec = Codec_4()
+codec = Codec()
 
 print(codec.encode("https://leetcode.com/problems/design-tinyurl"))
 print(codec.encode("https://leetcode.com/problems/design-tinyurlsdv"))

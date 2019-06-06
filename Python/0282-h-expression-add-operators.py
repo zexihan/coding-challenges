@@ -1,5 +1,7 @@
 """
 DFS
+Time: O(N x 4^n)
+Space: O(N)
 """
 class Solution:
     def addOperators(self, num: str, target: int) -> List[str]:

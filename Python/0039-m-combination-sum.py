@@ -1,18 +1,15 @@
-class Solution(object):
-    def combinationSum(self, candidates, target):
-        """
-        :type candidates: List[int]
-        :type target: int
-        :rtype: List[List[int]]
-        """
-        self.resList = []
-        candidates = sorted(candidates)
-        self.dfs(candidates, [], target, 0)
-        return self.resList
+"""
+DFS
+"""
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+        self.dfs(sorted(candidates), [], target, 0, res)
+        return res
 
-    def dfs(self, candidates, sublist, target, last):
+    def dfs(self, candidates, sublist, target, last, res):
         if target == 0:
-            self.resList.append(sublist[:])
+            res.append(sublist[:])
         if target < candidates[0]:
             return
         for n in candidates:
@@ -21,9 +18,8 @@ class Solution(object):
             if n < last:
                 continue
             sublist.append(n)
-            self.dfs(candidates, sublist, target - n, n)
+            self.dfs(candidates, sublist, target - n, n, res)
             sublist.pop()
 
 if __name__ == "__main__":
-    new = Solution()
-    print(new.combinationSum([2, 3, 6, 7], 7))
+    print(Solution().combinationSum([2, 3, 6, 7], 7))

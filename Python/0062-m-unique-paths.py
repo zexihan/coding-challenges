@@ -1,15 +1,12 @@
-# DP
-# f[i][j] = f[i-1][j] + f[i][j-1]
-# f[0][0] = 1; f[i][0] = 1, f[0][j] = 1
-# Time: O(mn)
-# Space: O(mn)
+"""
+DP
+f[i][j] = f[i-1][j] + f[i][j-1]
+f[0][0] = 1; f[i][0] = 1, f[0][j] = 1
+Time: O(mn)
+Space: O(mn)
+"""
 class Solution_1:
-    def uniquePaths(self, m, n):
-        """
-        :type m: int
-        :type n: int
-        :rtype: int
-        """
+    def uniquePaths(self, m: int, n: int) -> int:
         f = [([0] * n) for i in range(m)]
         # top to bottom rowwise
         for i in range(m):
@@ -25,12 +22,7 @@ class Solution_1:
 
 
 class Solution_2:
-    def uniquePaths(self, m, n):
-        """
-        :type m: int
-        :type n: int
-        :rtype: int
-        """
+    def uniquePaths(self, m: int, n: int) -> int:
         ways = [0] * n
         ways[0] = 1
         for i in range(m) :

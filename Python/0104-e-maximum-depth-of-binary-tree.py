@@ -6,7 +6,7 @@
 #         self.right = None
 
 """
-DFS
+DFS - Divide and Conquer
 """
 class Solution_1:
     def maxDepth(self, root: TreeNode) -> int:

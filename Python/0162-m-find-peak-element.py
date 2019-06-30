@@ -1,29 +1,19 @@
-# Time: O(logn)
 """
-If num[i-1] < num[i] > num[i+1], then num[i] is peak
-If num[i-1] < num[i] < num[i+1], then num[i+1...n-1] must contains a peak
-If num[i-1] > num[i] > num[i+1], then num[0...i-1] must contains a peak
-If num[i-1] > num[i] < num[i+1], then both sides have peak
+Binary Search
+Time: O(logn)
+Space: O(1)
 """
-class Solution(object):
-    def findPeakElement(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        return self.helper(nums, 0 , len(nums)-1)
-
-    def helper(self, nums, start, end):
-        if start == end:
-            return start
-        elif start + 1 == end:
-            if nums[start] > nums[end]: return start
-            return end
-        else:
-            m = (start + end) / 2
-            if nums[m] > nums[m-1] and nums[m] > nums[m+1]:
-                return m
-            elif nums[m-1] > nums[m] and nums[m] > nums[m+1]:
-                return self.helper(nums, start, m-1)
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        start, end = 0, len(nums) - 1
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] < nums[mid - 1]:
+                end = mid
+            elif nums[mid] < nums[mid + 1]:
+                start = mid
             else:
-                return self.helper(nums, m+1, end)
+                return mid
+        if nums[start] < nums[end]:
+            return end
+        return start

@@ -1,22 +1,23 @@
-# Time: O(logn)
-# Space: O(1)
-class Solution(object):
-    def findMin(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        low = 0
-        high = len(nums) - 1
-        while low < high -1:
-            if nums[low] < nums[high]:
-                return nums[low]
-            mid = (low+high) // 2
-            if nums[mid] > nums[low]:
-                low = mid
+"""
+Binary Search
+Time: O(logn)
+Space: O(1)
+"""
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        if not nums:
+            return -1
+        
+        start, end = 0, len(nums) - 1
+        target = nums[end]
+        while start + 1 < end:
+            mid = start + (end - start) // 2
+            if nums[mid] <= target:
+                end = mid
             else:
-                high = mid
-        return  min(nums[low],nums[high])
-
-run = Solution()
-print(run.findMin([3,1,2]))
+                start = mid
+        
+        if nums[start] <= target:
+            return nums[start]
+        else:
+            return nums[end]

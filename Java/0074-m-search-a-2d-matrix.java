@@ -1,6 +1,6 @@
 /* 
-Binary search
-*/
+ * Binary search
+ */
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0) {

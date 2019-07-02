@@ -1,6 +1,6 @@
 /*
-Binary Search
-*/
+ * Binary Search
+ */
 class Solution {
     public int findMin(int[] nums) {
         if (nums == null || nums.length == 0) {

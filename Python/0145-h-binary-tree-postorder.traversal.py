@@ -5,19 +5,38 @@
 #         self.left = None
 #         self.right = None
 
-
-class Solution:
+"""
+Recursion
+"""
+class Solution_1:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
-        if root is None:
+        res = []
+        self.postorder(root, res)
+        return res
+
+    def postorder(self, node, res):
+        if not node:
+            return
+        self.postorder(node.left, res)
+        self.postorder(node.right, res)
+        res.append(node.val)
+
+"""
+Non-Recursion
+"""
+class Solution_2:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
             return []
 
-        stack, output = [root, ], []
+        stack = [root]
+        res = []
         while stack:
             root = stack.pop()
-            output.append(root.val)
-            if root.left is not None:
+            res.append(root.val)
+            if root.left:
                 stack.append(root.left)
-            if root.right is not None:
+            if root.right:
                 stack.append(root.right)
 
-        return output[::-1]
+        return res[::-1]

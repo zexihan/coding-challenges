@@ -1,6 +1,6 @@
 /*
-Binary Search
-*/
+ * Binary Search
+ */
 class Solution {
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {

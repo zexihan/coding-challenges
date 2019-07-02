@@ -1,6 +1,6 @@
 /*
-Binary Search
-*/
+ * Binary Search
+ */
 class Solution {
     public int arrangeCoins(int n) {
         int start = 1, end = n;

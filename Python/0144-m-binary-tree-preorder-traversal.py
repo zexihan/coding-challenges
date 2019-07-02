@@ -5,22 +5,42 @@
 #         self.left = None
 #         self.right = None
 
-# Time: O(n)
-# Space: O(n)
-class Solution:
+"""
+Recursion
+Time: O(n)
+Space: O(n)
+"""
+class Solution_1:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
-        if root is None:
+        res = []
+        self.preorder(root, res)
+        return res
+
+    def preorder(self, node, res):
+        if not node:
+            return
+
+        res.append(node.val)
+        self.preorder(node.left, res)
+        self.preorder(node.right, res)
+
+        
+
+"""
+Non-Recursion
+"""
+class Solution_2:
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
             return []
 
-        stack, output = [root, ], []
-
+        stack = [root]
+        res = []
         while stack:
-            root = stack.pop()
-            if root is not None:
-                output.append(root.val)
-                if root.right is not None:
-                    stack.append(root.right)
-                if root.left is not None:
-                    stack.append(root.left)
-
-        return output
+            node = stack.pop()
+            res.append(node.val)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+        return res

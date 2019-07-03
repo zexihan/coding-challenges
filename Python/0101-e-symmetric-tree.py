@@ -1,28 +1,26 @@
 # Definition for a binary tree node.
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-# Time: O(n)
-# Space: O(1), ignore the recursion stack space
-# Help function and Recursion
-class Solution_1(object):
-    def isSymmetric(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-        if root is None:
+"""
+Recursion
+Time: O(n)
+Space: O(1), ignore the recursion stack space
+"""
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if not root:
             return True
         else:
             return self.isMirror(root.left, root.right)
 
     def isMirror(self, left, right):
-        if left is None and right is None:
+        if not left and not right:
             return True
-        if left is None or right is None:
+        if not left or not right:
             return False
 
         if left.val == right.val:
@@ -32,26 +30,3 @@ class Solution_1(object):
         else:
             return False
 
-# Iteration
-class Solution_2(object):
-    def isSymmetric(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-# Level order traversal
-class Solution_3(object):
-    def isSymmetric(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-
-
-if __name__ == "__main__":
-    new_1 = Solution_1()
-    root = TreeNode(1)
-    root.left, root.right = TreeNode(2), TreeNode(2)
-    root.left.left, root.right.right = TreeNode(3), TreeNode(3)
-    root.left.right, root.right.left = TreeNode(4), TreeNode(4)
-    print(new_1.isSymmetric(root))

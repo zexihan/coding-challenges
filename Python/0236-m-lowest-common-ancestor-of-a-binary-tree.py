@@ -7,8 +7,10 @@
 
 """
 DFS - Divide and Conquer
-Time: O(n)
-Space: O(h)
+If LCA can be found, return LCA
+If node1 is found, return node1
+If node2 is found, return node2
+If nothing, return None
 """
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':

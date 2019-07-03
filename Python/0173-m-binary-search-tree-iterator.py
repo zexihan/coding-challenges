@@ -1,41 +1,38 @@
-# Definition for a  binary tree node
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-class BSTIterator(object):
-    def __init__(self, root):
-        """
-        :type root: TreeNode
-        """
+class BSTIterator:
+
+    def __init__(self, root: TreeNode):
+        def __init__(self, root: TreeNode):
         self.stack = []
-        self.pushAll(root)
-        
+        while root:
+            self.stack.append(root)
+            root = root.left
 
-    def hasNext(self):
+    def next(self) -> int:
         """
-        :rtype: bool
+        @return the next smallest number
         """
-        return bool(self.stack)
-        
+        node = self.stack.pop()
+        n = node.right
+        while n:
+            self.stack.append(n)
+            n = n.left
+        return node.val
 
-    def next(self):
+    def hasNext(self) -> bool:
         """
-        :rtype: int
+        @return whether we have a next smallest number
         """
-        tmpNode = self.stack.pop()
-        self.pushAll(tmpNode.right)
-        return tmpNode.val
+        return len(self.stack) > 0
 
-    
-    def pushAll(self, node):
-        while node:
-            self.stack.append(node)
-            node = node.left
-        
 
-# Your BSTIterator will be called like this:
-# i, v = BSTIterator(root), []
-# while i.hasNext(): v.append(i.next())
+# Your BSTIterator object will be instantiated and called as such:
+# obj = BSTIterator(root)
+# param_1 = obj.next()
+# param_2 = obj.hasNext()

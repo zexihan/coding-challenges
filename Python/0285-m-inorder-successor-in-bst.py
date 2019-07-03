@@ -6,7 +6,7 @@
 #         self.right = None
 
 """
-recursive
+Recursive
 Time: O(h) 
 balanced - O(logn), unbalanced - O(n)
 """
@@ -20,15 +20,15 @@ class Solution_1:
             return self.inorderSuccessor(root.left, p) or root
 
 """
-iterative
+Iterative
 """
 class Solution_2:
     def inorderSuccessor(self, root: 'TreeNode', p: 'TreeNode') -> 'TreeNode':
-        if root is None or p is None:
+        if not root or not p:
             return None
         
         successor = None
-        while root is not None:
+        while root:
             if p.val < root.val:
                 successor = root
                 root = root.left

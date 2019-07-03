@@ -15,15 +15,15 @@ class Solution_1:
         return self.dfs(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)
     
     def dfs(self, root, sum):
-        res = 0
-        if not root:
-            return res
+        cnt = 0
         sum -= root.val
         if sum == 0:
-            res += 1
-        res += self.dfs(root.left, sum)
-        res += self.dfs(root.right, sum)
-        return res
+            cnt += 1
+        if root.left:
+            cnt += self.dfs(root.left, sum)
+        if root.right:
+            cnt += self.dfs(root.right, sum)
+        return cnt
 
 """
 BFS (find starting node) + DFS (calculate num of paths)

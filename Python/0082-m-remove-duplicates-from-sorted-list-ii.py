@@ -4,23 +4,24 @@
 #         self.val = x
 #         self.next = None
 
-
+"""
+Linked List
+"""
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
-        if not head or not head.next:
-            return head
-        
         dummy = ListNode(0)
         dummy.next = head
-        pre = dummy
-        cur = dummy.next
 
-        while cur:
-            while cur.next and cur.next.val == pre.next.val:
-                cur = cur.next
-            if pre.next == cur:
-                pre = pre.next
+        prev = dummy
+        curt = head
+
+        while curt and curt.next:
+            if curt.val == curt.next.val:
+                dupVal = curt.val
+                while curt and curt.val == dupVal:
+                    prev.next = curt.next
+                    curt = curt.next
             else:
-                pre.next = cur.next
-            cur = cur.next
+                prev = prev.next
+                curt = curt.next
         return dummy.next

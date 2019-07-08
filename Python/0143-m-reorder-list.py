@@ -1,52 +1,55 @@
 # Definition for singly-linked list.
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-class Solution(object):
-    def reorderList(self, head):
-        """
-        :type head: ListNode
-        :rtype: void Do not return anything, modify head in-place instead.
-        """
-        if not head:
-            return
-
-        # step 1: find the mid point
-        slow = fast = head 
+"""
+Linked List
+1. find the mid point
+2. reverse the second half
+3. merge
+"""
+class Solution:
+    def _splitList(self, head):
+        slow, fast = head, head.next
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        
-        # step 2: reverse the second half in-place
-        p = slow
-        q = slow.next
+        middle = slow.next
         slow.next = None
-        while q:
-            r = q.next
-            q.next = p
-            p = q
-            q = r
-        pre = p
-        #pre, node = None, slow
-        #while node:
-        #    pre, node.next, node = node, pre, node.next
-        
-        # step 3: merge in-place; Note : the last node of "first" and "second" are the same
-        first, second = head, pre
-        while second.next:
-            first.next, first = second, first.next
-            second.next, second = first, second.next
-        
-        return head
+        return head, middle
 
-if __name__ == "__main__":
-    x = ListNode(1)
-    x.next = ListNode(2)
-    x.next.next = ListNode(3)
-    x.next.next.next = ListNode(4)
-    x.next.next.next.next = ListNode(5)
-    x.next.next.next.next.next = ListNode(6)
-    new = Solution()
-    print(new.reorderList(x).next.next.next.next.val)
+    def _reverseList(self, head):
+        prev = None
+        curt = head
+        while curt:
+            temp = curt.next
+            curt.next = prev
+            prev = curt
+            curt = temp
+        return prev
+
+    def _mergeList(self, head1, head2):
+        while head2:
+           temp = head2.next
+           head2.next = head1.next
+           head1.next = head2
+           head1 = head1.next.next
+           head2 = temp
+
+    def reorderList(self, head: ListNode) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        if not head or not head.next:
+            return
+
+        # find the mid point
+        head1, head2 = self._splitList(head)
+
+        # reverse the second half
+        head2 = self._reverseList(head2)
+
+        #  merge
+        self._mergeList(head1, head2)

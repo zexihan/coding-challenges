@@ -1,37 +1,30 @@
-# DP - TLE
-# f[j] = OR_{0<=i<j}(f[i] AND i + a[i] >= j)
-# f[0] = True
-# Time: O(n^2)
-# Space: O(n)
+"""
+DP
+Time: O(n^2) - TLE
+Space: O(n)
+"""
 class Solution_1:
-    def canJump(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+    def canJump(self, nums: List[int]) -> bool:
         n = len(nums)
-        f = [False] * n
-
-        # init
-        f[0] = True
-        for j in range(1, n):
-            # previous stone i before j
-            # last jump from i to j
-            # OR..
-            for i in range(j):
-                if f[i] and i + nums[i] >= j:
-                    f[j] = True
-                    break
         
+        # init
+        f = [False] * n
+        f[0] = True
+
+        # function
+        for curt in range(1, n):
+            for prev in range(curt):
+                if f[prev] and prev + nums[prev] >= curt:
+                    f[curt] = True
+                    break
+        # answer
         return f[n - 1]
 
-# Greedy
+"""
+Greedy
+"""
 class Solution_2:
-    def canJump(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+    def canJump(self, nums: List[int]) -> bool:
         lastPos = len(nums) - 1
         for i in range(len(nums) - 1, -1, -1):
             if i + nums[i] >= lastPos:

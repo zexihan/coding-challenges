@@ -7,7 +7,7 @@ class Node:
         self.random = random
 """
 """
-two pass
+Two pass
 Time: O(n)
 Space: O(n)
 """
@@ -16,7 +16,9 @@ class Solution_1:
         if not head:
             return None
 
-        myMap = {}
+        myMap = {} # old: new
+
+        # copy next
         nHead = Node(head.val, None, None)
         myMap[head] = nHead
         p, q = head, nHead
@@ -28,6 +30,7 @@ class Solution_1:
             p = p.next
             q = q.next
 
+        # copy random
         p = nHead
         while p:
             if p.random:
@@ -37,7 +40,7 @@ class Solution_1:
 
 
 """
-recursive
+Recursive
 Time: O(n)
 Space: O(n)
 """

@@ -1,26 +1,15 @@
-# Time: O(n)
-# Space: O(1)
-# Dynamic Programming
-class Solution(object):
-    def climbStairs(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        if n <= 0:
-            return 0
+"""
+DP
+Time: O(n)
+Space: O(1)
+"""
+class Solution:
+    def climbStairs(self, n: int) -> int:
         if n == 1:
             return 1
-
-        pre = 1
-        cur = 2
-
-        for i in range(2, n):
-            tmp = cur
-            cur = pre + cur
-            pre = tmp
-        return cur
-
-if __name__ == "__main__":
-    new = Solution()
-    print(new.climbStairs(5))
+        f = [0] * (n + 1)
+        f[1] = 1
+        f[2] = 2
+        for i in range(3, n + 1):
+            f[i] = f[i - 1] + f[i - 2]
+        return f[n]

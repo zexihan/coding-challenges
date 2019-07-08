@@ -1,41 +1,41 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
 
-class Solution(object):
-    def sortList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        if head == None or head.next == None:
+"""
+Linked List
+Merge Sort
+"""
+class Solution:
+    def sortList(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
             return head
         slow = head
-        fast = head.next.next
-        while fast != None and fast.next != None:
+        fast = head.next
+        while fast and fast.next:
             fast = fast.next.next
             slow = slow.next
-        p2 = self.sortList(slow.next)
+        right = self.sortList(slow.next)
         slow.next = None
-        p1 = self.sortList(head)
-        return self.merge(p1,p2)
+        left = self.sortList(head)
+        return self.merge(left, right)
     
-    def merge(self, p1, p2):
-        p, dummy = ListNode(0), ListNode(0)
-        p = dummy
-        while p1 != None and p2 != None:
-            if p1.val < p2.val:
-                p.next = p1
-                p1 = p1.next
+    def merge(self, head1, head2):
+        dummy = ListNode(0)
+        tail = dummy
+        while head1 and head2:
+            if head1.val < head2.val:
+                tail.next = head1
+                head1 = head1.next
             else:
-                p.next = p2
-                p2 = p2.next
-            p = p.next
-        if p1 == None:
-            p.next = p2
+                tail.next = head2
+                head2 = head2.next
+            tail = tail.next
+        if not head1:
+            tail.next = head2
         else:
-            p.next = p1
+            tail.next = head1
         return dummy.next
         

@@ -4,31 +4,28 @@
 #         self.val = x
 #         self.next = None
 
-# Iterative
+"""
+Linked List
+Iterative
+"""
 class Solution_1:
-    def reverseList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        if not head or not head.next:
-            return head
-        prev =  None
-        curr = head
-        while curr:
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
+    def reverseList(self, head: ListNode) -> ListNode:
+        prev = None
+        curt = head
+
+        while curt:
+            temp = curt.next
+            curt.next = prev
+            prev = curt
+            curt = temp
+
         return prev
 
-# Recursive
+"""
+Recursive
+"""
 class Solution_2:
-    def reverseList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
+    def reverseList(self, head: ListNode) -> ListNode:
         if not head or not head.next: 
             return head
         new_head = self.reverseList(head.next)

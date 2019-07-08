@@ -4,19 +4,19 @@
 #         self.val = x
 #         self.next = None
 
+"""
+Linked List
+"""
 class Solution(object):
     def hasCycle(self, head):
         """
         :type head: ListNode
         :rtype: bool
         """
-        if head is None:
-            return False
-        walker = head
-        runner = head
-        while runner.next is not None and runner.next.next is not None:
-            walker = walker.next
-            runner = runner.next.next
-            if walker == runner:
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if fast == slow:
                 return True
         return False

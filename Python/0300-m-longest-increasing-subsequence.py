@@ -1,41 +1,41 @@
-# Dynamic Programming, Binary Search
-# F[1] = 1
-# F[i] = max{1, F[j]+1 | aj<ai and j < i}
-
+"""
+DP
+F[1] = 1
+F[i] = max{1, F[j]+1 | aj<ai and j < i}
+Time: O(n^2)
+Space: O(n)
+"""
 class Solution_1:
-    def lengthOfLIS(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def lengthOfLIS(self, nums: List[int]) -> int:
         if not nums:
             return 0
-        l = len(nums)
-        dp=[1] * l
-        for i in range(l):
-            for j in range(i):
-                if nums[i] > nums[j]:
-                    dp[i] = max(dp[i], dp[j] + 1)
+        n = len(nums)
+        dp = [1] * n
+        for curt in range(n):
+            for prev in range(curt):
+                if nums[curt] > nums[prev]:
+                    dp[curt] = max(dp[curt], dp[prev] + 1)
         return max(dp)
 
+"""
+Binary Search
+Time: O(nlogn)
+Space: O(n)
+"""
 class Solution_2:
-    def lengthOfLIS(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        ans=[]
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        res = []
         for x in range(len(nums)):
-            low = 0
-            high = len(ans) - 1
-            while low <= high:
-                mid = (low + high) // 2 
-                if ans[mid] < nums[x]: 
-                    low = mid + 1            
+            start = 0
+            end = len(res) - 1
+            while start <= end:
+                mid = start + (end - start) // 2
+                if res[mid] < nums[x]:
+                    start = mid + 1
                 else:
-                    high = mid - 1                              
-            if low >= len(ans):                 
-                ans.append(nums[x])
+                    end = mid - 1
+            if start >= len(res):
+                res.append(nums[x])
             else:                               
-                ans[low] = nums[x]
-        return len(ans)
+                res[start] = nums[x]
+        return len(res)

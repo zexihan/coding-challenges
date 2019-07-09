@@ -1,4 +1,7 @@
-class Solution:
+"""
+Greedy
+"""
+class Solution_1:
     def maxProfit(self, prices: List[int]) -> int:
         if not prices:
             return 0

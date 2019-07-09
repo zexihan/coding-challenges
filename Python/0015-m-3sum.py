@@ -1,12 +1,10 @@
-# Time: O(n^2)
-# Space: O(1)
-# Sort and use two pointers
-class Solution(object):
-    def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
+"""
+Sort and use two pointers
+Time: O(n^2)
+Space: O(1)
+"""
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         res = []
         for i in range(len(nums) - 2):
@@ -31,7 +29,3 @@ class Solution(object):
                     while left < right and nums[right] == nums[right + 1]:
                         right -= 1
         return res
-
-if __name__ == "__main__":
-    new = Solution()
-    print(new.threeSum([-1, 0, 1, 2, -1, -4])) # [[-1, 0, 1], [-1, -1, 2]]

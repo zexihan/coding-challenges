@@ -4,18 +4,19 @@ DFS
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
-        self.backtrack(sorted(candidates), [], target, 0, res)
+        self.helper(sorted(candidates), [], 0, target, res)
         return res
-    
-    def backtrack(self, candidates, tempL, remain, start, res):
-        if remain == 0:
-            res.append(tempL[:])
+
+    def helper(self, candidates, path, start, target, res):
+        if target == 0:
+            res.append(path[:])
             return
-        if remain < 0: 
-            return
+
         for i in range(start, len(candidates)):
-            if i > start and candidates[i] == candidates[i - 1]: 
+            if candidates[i] > target:
+                return
+            if i > start and candidates[i] == candidates[i - 1]:
                 continue
-            tempL.append(candidates[i])
-            self.backtrack(candidates, tempL, remain - candidates[i], i + 1, res)
-            tempL.pop()
+            path.append(candidates[i])
+            self.helper(candidates, path, i + 1, target - candidates[i], res)
+            path.pop()

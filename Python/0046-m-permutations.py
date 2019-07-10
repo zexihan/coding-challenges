@@ -11,21 +11,17 @@ class Solution_1:
         self.helper(nums, [], res)
         return res
 
-    def helper(self, nums, lst, res):
-        # base case: filled in all positions
-        if len(lst) == len(nums):
-            res.append(lst[:])
+    def helper(self, nums, path, res):
+        if len(path) == len(nums):
+            res.append(path[:])
             return
-        
-        # main cases: for each elem
+
         for n in nums:
-            # position left == nums left (no duplicates)
-            if n not in lst:
-                lst.append(n)
-                # next position
-                self.helper(nums, lst, res)
-                # empty last position for next iteration
-                lst.pop()
+            if n in path:
+                continue
+            path.append(n)
+            self.helper(nums, path, res)
+            path.pop()
 
 """
 DFS + Swap
@@ -51,8 +47,3 @@ class Solution_2:
             self.helper(nums, pos + 1, res)
             # swap back: free a position for going right
             nums[pos], nums[i] = nums[i], nums[pos]
-
-
-if __name__ == "__main__":
-    print(Solution_1().permute([1, 2, 3]))
-    print(Solution_2().permute([1, 2, 3]))

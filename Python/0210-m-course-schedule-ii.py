@@ -1,5 +1,5 @@
 """
-topological sort, bfs
+Topological sort, BFS
 Time: O(n^2)
 Space: O(n)
 """
@@ -27,7 +27,7 @@ class Solution_1:
         return path
 
 """
-topological sort, dfs
+Topological sort, DFS
 Time: O(n)
 Space: O(n)
 """

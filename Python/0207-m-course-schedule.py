@@ -1,6 +1,6 @@
 """
 https://blog.csdn.net/fuxuemingzhu/article/details/82951771
-topological sort, bfs
+Topological sort, BFS
 Time: O(n^2)
 Space: O(n)
 """
@@ -26,7 +26,7 @@ class Solution_1:
         return True
 
 """
-topological sort, dfs
+Topological sort, DFS
 Time: O(n)
 Space: O(n)
 """

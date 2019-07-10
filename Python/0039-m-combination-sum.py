@@ -7,19 +7,12 @@ class Solution:
         self.dfs(sorted(candidates), [], target, 0, res)
         return res
 
-    def dfs(self, candidates, sublist, target, last, res):
+    def dfs(self, candidates, sublist, target, start, res):
         if target == 0:
             res.append(sublist[:])
-        if target < candidates[0]:
-            return
-        for n in candidates:
-            if n > target:
+        for i in range(start, len(candidates)):
+            if candidates[i] > target:
                 return
-            if n < last:
-                continue
-            sublist.append(n)
-            self.dfs(candidates, sublist, target - n, n, res)
+            sublist.append(candidates[i])
+            self.dfs(candidates, sublist, target - candidates[i], i, res)
             sublist.pop()
-
-if __name__ == "__main__":
-    print(Solution().combinationSum([2, 3, 6, 7], 7))

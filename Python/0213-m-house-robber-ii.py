@@ -1,18 +1,14 @@
-# Time:
-# Space:
 """
 Dynamic Programming
 all cases {
     rob 0 -> max == 7
     rob 4(last) -> max == 9
 } find max
+Time: O(n)
+Space: O(1)
 """
-class Solution(object):
-    def rob(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+class Solution:
+    def rob(self, nums: List[int]) -> int:
         if not nums:
             return 0
         if len(nums) == 1:
@@ -30,7 +26,3 @@ class Solution(object):
             cur = next
         
         return cur
-
-if __name__ == "__main__":
-    new = Solution()
-    print(new.rob([1, 4, 4, 3, 5])) # 9

@@ -1,4 +1,4 @@
-class MinStack(object):
+class MinStack:
 
     def __init__(self):
         """
@@ -6,35 +6,22 @@ class MinStack(object):
         """
         self.q = []
 
-    def push(self, x):
-        """
-        :type x: int
-        :rtype: void
-        """
+    def push(self, x: int) -> None:
         curMin = self.getMin()
-        if curMin == None or x < curMin:
+        if curMin is None or x < curMin:
             curMin = x
         self.q.append((x, curMin))
         
-    def pop(self):
-        """
-        :rtype: void
-        """
+    def pop(self) -> None:
         self.q.pop()
 
-    def top(self):
-        """
-        :rtype: int
-        """
+    def top(self) -> int:
         if len(self.q) == 0:
             return None
         else:
             return self.q[len(self.q) - 1][0]
 
-    def getMin(self):
-        """
-        :rtype: int
-        """
+    def getMin(self) -> int:
         if len(self.q) == 0:
             return None
         else:

@@ -1,21 +1,20 @@
+"""
+DP
+Time: O(n)
+Space: O(1)
+"""
 class Solution:
-    def findLengthOfLCIS(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        n = len(nums)
-        if n == 0:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        if not nums:
             return 0
-
-        dp = [0 for i in range(n)]
-        res = 0
-        for i in range(n):
-            dp[i] = 1
-
-            if i > 0 and nums[i] > nums[i-1]:
-                dp[i] = dp[i-1] + 1
-
-            res = max(res, dp[i])
-
+        n = len(nums)
+        prev = 1
+        res = 1
+        for i in range(1, n):
+            if nums[i] > nums[i-1]:
+               curt = prev + 1
+            else:
+                curt = 1
+            res = max(res, curt)
+            prev = curt
         return res

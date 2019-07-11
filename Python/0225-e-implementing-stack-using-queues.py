@@ -1,5 +1,7 @@
+"""
+Two Queues, push - O(1), pop O(n)
+"""
 from collections import deque
-# Two Queues, push - O(1), pop O(n)
 class MyStack_1:
 
     def __init__(self):
@@ -10,19 +12,16 @@ class MyStack_1:
         self.q2 = deque()
         self.top_element = 0
 
-    def push(self, x):
+    def push(self, x: int) -> None:
         """
         Push element x onto stack.
-        :type x: int
-        :rtype: void
         """
         self.q1.append(x)
         self.top_element = x
 
-    def pop(self):
+    def pop(self) -> int:
         """
         Removes the element on top of the stack and returns that element.
-        :rtype: int
         """
         while len(self.q1) > 1:
             self.top_element = self.q1.popleft()
@@ -31,22 +30,21 @@ class MyStack_1:
         self.q1, self.q2 = self.q2, self.q1
         return res
 
-    def top(self):
+    def top(self) -> int:
         """
         Get the top element.
-        :rtype: int
         """
         return self.top_element
 
-    def empty(self):
+    def empty(self) -> bool:
         """
         Returns whether the stack is empty.
-        :rtype: bool
         """
         return False if len(self.q1) > 0 else True
 
-
-# Two Queues, push - O(n), pop O(1)
+"""
+Two Queues, push - O(n), pop O(1)
+"""
 class MyStack_2:
 
     def __init__(self):
@@ -57,11 +55,9 @@ class MyStack_2:
         self.q2 = deque()
         self.top_element = 0
 
-    def push(self, x):
+    def push(self, x: int) -> None:
         """
         Push element x onto stack.
-        :type x: int
-        :rtype: void
         """
         self.q2.append(x)
         self.top_element = x
@@ -69,33 +65,31 @@ class MyStack_2:
             self.q2.append(self.q1.popleft())
         self.q1, self.q2 = self.q2, self.q1
 
-    def pop(self):
+    def pop(self) -> int:
         """
         Removes the element on top of the stack and returns that element.
-        :rtype: int
         """
         res = self.q1.popleft()
         if len(self.q1) > 0:
             self.top_element = self.q1[0]
         return res
 
-    def top(self):
+    def top(self) -> int:
         """
         Get the top element.
-        :rtype: int
         """
         return self.top_element
 
-    def empty(self):
+    def empty(self) -> bool:
         """
         Returns whether the stack is empty.
-        :rtype: bool
         """
         return False if len(self.q1) > 0 else True
 
 
-
-# One Queue, push - O(n), pop O(1)
+"""
+One Queue, push - O(n), pop O(1)
+"""
 class MyStack_3:
 
     def __init__(self):
@@ -104,11 +98,9 @@ class MyStack_3:
         """
         self.q = deque()
 
-    def push(self, x):
+    def push(self, x: int) -> None:
         """
         Push element x onto stack.
-        :type x: int
-        :rtype: void
         """
         self.q.append(x)
         n = len(self.q)
@@ -116,24 +108,21 @@ class MyStack_3:
             self.q.append(self.q.popleft())
             n -= 1
 
-    def pop(self):
+    def pop(self) -> int:
         """
         Removes the element on top of the stack and returns that element.
-        :rtype: int
         """
         return self.q.popleft()
 
-    def top(self):
+    def top(self) -> int:
         """
         Get the top element.
-        :rtype: int
         """
         return self.q[0]
 
-    def empty(self):
+    def empty(self) -> bool:
         """
         Returns whether the stack is empty.
-        :rtype: bool
         """
         return False if len(self.q) > 0 else True
 

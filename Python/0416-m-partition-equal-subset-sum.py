@@ -1,7 +1,7 @@
 """
 DFS
 """
-class Solution:
+class Solution_1:
     def canPartition(self, nums: List[int]) -> bool:
         div, mod = divmod(sum(nums), 2)
         if mod or max(nums) > div:
@@ -22,5 +22,20 @@ class Solution:
         return False
 
 """
-DP TBD
+DP
+0/1 knapsack
 """
+class Solution_2:
+    def canPartition(self, nums: List[int]) -> bool:
+        div, mod = divmod(sum(nums), 2)
+        if mod or max(nums) > div:
+            return False
+        n = len(nums)
+        dp = [False] * (div + 1)
+        dp[0] = True
+        
+        for num in nums:
+            for i in range(div, -1, -1):
+                if i >= num:
+                    dp[i] = dp[i] or dp[i - num]
+        return dp[div]

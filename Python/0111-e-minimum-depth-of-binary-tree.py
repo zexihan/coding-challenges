@@ -5,6 +5,9 @@
 #         self.left = None
 #         self.right = None
 
+"""
+Recursion - Divide and Conquer
+"""
 class Solution_1:
     def minDepth(self, root: TreeNode) -> int:
         if not root:
@@ -13,8 +16,16 @@ class Solution_1:
             return self.minDepth(root.right) + 1
         if root.left and not root.right:
             return self.minDepth(root.left) + 1
-        return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
+        
+        leftMinDepth = self.minDepth(root.left)
+        rightMinDepth = self.minDepth(root.right)
 
+        return min(leftMinDepth, rightMinDepth) + 1
+
+
+"""
+Recursion - Divide and Conquer
+"""
 class Solution_2:
     def minDepth(self, root: TreeNode) -> int:
         if not root:
@@ -29,7 +40,7 @@ class Solution_2:
         if not node.left and not node.right:
             return 1
         
-        left = self.getMin(node.left)
-        right = self.getMin(node.right)
+        leftMinDepth = self.getMin(node.left)
+        rightMinDepth = self.getMin(node.right)
 
-        return min(left, right) + 1
+        return min(leftMinDepth, rightMinDepth) + 1

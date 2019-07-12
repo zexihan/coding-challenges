@@ -1,6 +1,6 @@
 """
 Time: O(n)
-Space: O(n)
+Space: O(1)
 """
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
@@ -13,6 +13,3 @@ class Solution:
             map[s[i]] = i
             res = max(res, i - left + 1)
         return res
-
-if __name__ == "__main__":
-    print(Solution().lengthOfLongestSubstring("abcabcbb"))

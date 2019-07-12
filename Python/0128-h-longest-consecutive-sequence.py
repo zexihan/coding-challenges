@@ -1,6 +1,6 @@
 """
-Primitive idea:
-Sorting method
+Primitive idea
+Sorting
 Time: O(nlogn)
 Space: O(n)
 """
@@ -54,14 +54,3 @@ class Solution_2:
                     r += 1
                 res = max(res, r - l - 1)
         return res
-            
-
-if __name__ == "__main__":
-    new_1 = Solution_1()
-    new_2 = Solution_2()
-    print(new_1.longestConsecutive([100, 4, 200, 1, 3, 2]))
-    print(new_1.longestConsecutive([100, 4, 101, 1, 3, 2, 102, 7, 99, 12, 98]))
-    print(new_1.longestConsecutive([]))
-    print(new_2.longestConsecutive([100, 4, 200, 1, 3, 2]))
-    print(new_2.longestConsecutive([100, 4, 101, 1, 3, 2, 102, 7, 99, 12, 98]))
-    print(new_2.longestConsecutive([]))

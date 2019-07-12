@@ -1,19 +1,45 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
-# Recursions
-# Time: O(N)
-# Space: O(N)
-class Solution_1(object):
-    def binaryTreePaths(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[str]
-        """
+"""
+Recursion - Divide and Conquer
+Time: O(N)
+Space: O(N)
+"""
+class Solution_1:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        paths = []
+        
+        if not root:
+            return paths
+        
+        if not root.left and not root.right:
+            paths.append(str(root.val))
+            return paths
+        
+        leftPaths = self.binaryTreePaths(root.left)
+        rightPaths = self.binaryTreePaths(root.right)
+        
+        for path in leftPaths:
+            paths.append(str(root.val) + '->' + path)
+        
+        for path in rightPaths:
+            paths.append(str(root.val) + '->' + path)
+        
+        return paths
+        
+
+"""
+Recursion - Traverse
+Time: O(N)
+Space: O(N)
+"""
+class Solution_2:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
         def construct_paths(root, path):
             if root:
                 path += str(root.val)
@@ -27,15 +53,13 @@ class Solution_1(object):
         construct_paths(root, '')
         return paths
 
-# Iterations
-# Time: O(N)
-# Space: O(N)
-class Solution_2(object):
-    def binaryTreePaths(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[str]
-        """
+"""
+Iterations
+Time: O(N)
+Space: O(N)
+"""
+class Solution_3:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
         if not root:
             return []
 

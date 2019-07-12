@@ -5,6 +5,9 @@
 #         self.left = None
 #         self.right = None
 
+"""
+Recursion - Divide and Conquer
+"""
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         if not root:

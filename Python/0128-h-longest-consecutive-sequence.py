@@ -24,7 +24,7 @@ class Solution_1:
 
 
 """
-Set method
+Set
 Put nums into set
 For each element of nums, find its lower and upper bound
 Time: O(n)

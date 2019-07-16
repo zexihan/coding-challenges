@@ -30,7 +30,6 @@ class Solution_2:
         div, mod = divmod(sum(nums), 2)
         if mod or max(nums) > div:
             return False
-        n = len(nums)
         dp = [False] * (div + 1)
         dp[0] = True
         

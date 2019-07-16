@@ -20,7 +20,7 @@ class Solution:
         
         node = dummy
         # find the m-1th node
-        for i in range(1, m):
+        for _ in range(m - 1):
             if not node:
                 return None
             node = node.next
@@ -33,7 +33,7 @@ class Solution:
         mNode = node.next
         nNode = mNode
         postnNode = mNode.next
-        for i in range(m, n):
+        for _ in range(m, n):
             if not postnNode:
                 return None
             temp = postnNode.next

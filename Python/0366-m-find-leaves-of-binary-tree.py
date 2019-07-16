@@ -5,7 +5,7 @@
 #         self.left = None
 #         self.right = None
 """
-dfs
+DFS + Hash Table
 当前node的高度是 1 + Max（height(node.left), height(node.right)
 leaf的高度是 0
 The height of a node is also its index in the result list (res).
@@ -25,7 +25,10 @@ class Solution:
         if not cur:
             return 0
 
-        h = max(self.dfs(cur.left, hash), self.dfs(cur.right, hash)) + 1
+        leftH = self.dfs(cur.left, hash)
+        rightH = self.dfs(cur.right, hash)
+
+        h = max(leftH, rightH) + 1
         hash[h].append(cur.val)
 
         return h

@@ -1,53 +1,47 @@
+import collections
+class TrieNode():
+    def __init__(self):
+        self.children = collections.defaultdict(TrieNode)
+        self.isWord = False
+
 class Trie:
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.root = {}
+        self.root = TrieNode()
 
-    def insert(self, word):
+    def insert(self, word: str) -> None:
         """
         Inserts a word into the trie.
-        :type word: str
-        :rtype: void
         """
-        p = self.root
-        for c in word:
-            if c not in p:
-                p[c] = {}
-            p = p[c]
-        p['#'] = True
+        node = self.root
+        for w in word:
+            node = node.children[w]
+        node.isWord = True
 
-    def search(self, word):
+    def search(self, word: str) -> bool:
         """
         Returns if the word is in the trie.
-        :type word: str
-        :rtype: bool
         """
-        node = self.find(word)
-        return node is not None and '#' in node
+        node = self.root
+        for w in word:
+            node = node.children.get(w)
+            if not node:
+                return False
+        return node.isWord
 
-    def startsWith(self, prefix):
+    def startsWith(self, prefix: str) -> bool:
         """
         Returns if there is any word in the trie that starts with the given prefix.
-        :type prefix: str
-        :rtype: bool
         """
-        return self.find(prefix) is not None
-    
-    def find(self, prefix):
-        """
-        Returns the trie node start of prefix, if there is no word in the trie
-        that starts with the given prefix returns None
-        :type prefix: str
-        :rtype: set
-        """    
-        p = self.root
-        for c in prefix:
-            if c not in p: return None
-            p = p[c]
-        return p
+        node = self.root
+        for w in prefix:
+            node = node.children.get(w)
+            if not node:
+                return False
+        return True
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()

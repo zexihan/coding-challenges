@@ -1,11 +1,12 @@
-# Time: O(mn)
-# Space: O(mn)
+"""
+Time: O(mn)
+Space: O(mn)
+"""
 import copy
 class Solution_1:
-    def gameOfLife(self, board):
+    def gameOfLife(self, board: List[List[int]]) -> None:
         """
-        :type board: List[List[int]]
-        :rtype: void Do not return anything, modify board in-place instead.
+        Do not return anything, modify board in-place instead.
         """
         temp = copy.deepcopy(board)
 
@@ -32,19 +33,18 @@ class Solution_1:
                 cnt += 1
         return cnt
 
-'''
+"""
 0 : 0 -> 0
 1 : 1 -> 1
 2 : 1 -> 0
 3 : 0 -> 1
 Time: O(mn)
 Space: O(1)
-'''
+"""
 class Solution_2:
-    def gameOfLife(self, board):
+    def gameOfLife(self, board: List[List[int]]) -> None:
         """
-        :type board: List[List[int]]
-        :rtype: void Do not return anything, modify board in-place instead.
+        Do not return anything, modify board in-place instead.
         """
         m, n = len(board), len(board[0])
         for i in range(m):

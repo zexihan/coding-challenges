@@ -1,12 +1,9 @@
-# Time: O(4^n)
-# Space: O(4mn)
-class Solution(object):
-    def exist(self, board, word):
-        """
-        :type board: List[List[str]]
-        :type word: str
-        :rtype: bool
-        """
+"""
+Time: O(4^n)
+Space: O(4mn)
+"""
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
         w = list(word)
         for y in range(len(board)):
             for x in range(len(board[y])):

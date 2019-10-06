@@ -1,9 +1,5 @@
 class Solution:
-    def generateMatrix(self, n):
-        """
-        :type n: int
-        :rtype: List[List[int]]
-        """
+    def generateMatrix(self, n: int) -> List[List[int]]:
         res = [[0] * n for i in range(n)]
         nums = [i for i in range(1, n*n+1)]
         seen = [[False] * n for i in range(n)]

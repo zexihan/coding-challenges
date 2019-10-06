@@ -1,9 +1,5 @@
 class Solution:
-    def grayCode(self, n):
-        """
-        :type n: int
-        :rtype: List[int]
-        """
+    def grayCode(self, n: int) -> List[int]:
         if n == 0:
             return [0]
         return [int(x, 2) for x in self.helper(n)]

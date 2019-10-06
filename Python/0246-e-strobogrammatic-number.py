@@ -1,9 +1,5 @@
 class Solution:
-    def isStrobogrammatic(self, num):
-        """
-        :type num: str
-        :rtype: bool
-        """
+    def isStrobogrammatic(self, num: str) -> bool:
         i = 0
         j= len(num) - 1
         while i <= j:

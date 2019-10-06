@@ -1,9 +1,5 @@
 class Solution:
-    def firstMissingPositive(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def firstMissingPositive(self, nums: List[int]) -> int:
         i, n = 0, len(nums)
         
         while i < n:
@@ -23,13 +19,7 @@ class Solution:
         else:
             return k
         
-    def swap(self, nums, i, j):
-        """
-        :type nums: List[int]
-        :type i: int
-        :type j: int
-        :rtype: List[int]
-        """
+    def swap(self, nums: List[int], i: int, j: int) -> List[int]:
         temp = nums[i]
         nums[i] = nums[j]
         nums[j] = temp

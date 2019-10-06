@@ -1,11 +1,8 @@
-# Binary Search
-
+"""
+Binary Search
+"""
 class Solution_1:
-    def findDuplicate(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def findDuplicate(self, nums: List[int]) -> int:
         left = 0
         right = len(nums) - 1
         while(left <= right):
@@ -21,11 +18,7 @@ class Solution_1:
         return left
 
 class Solution_2:
-    def findDuplicate(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def findDuplicate(self, nums: List[int]) -> int:
         slow = nums[0]
         fast = nums[nums[0]]
         while(slow != fast):

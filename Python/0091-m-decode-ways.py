@@ -1,5 +1,5 @@
 """
-Dynamic Programming
+DP
 dp[i] represents the number of decode ways with the first i characters of the string
 1. dp[i] = dp[i-1] + dp[i-2], 10<=s[i-2:i]<=26 and s[i-2:i] != [10 or 20]
 2. dp[i] = dp[i-2], s[i-2:i] = [10 or 20]
@@ -22,6 +22,3 @@ class Solution:
             else: return 0
         
         return dp[len(s)]
-            
-if __name__ == "__main__":
-    print(Solution().numDecodings("123"))

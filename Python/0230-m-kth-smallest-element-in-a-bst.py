@@ -6,12 +6,7 @@
 #         self.right = None
 
 class Solution:
-    def kthSmallest(self, root, k):
-        """
-        :type root: TreeNode
-        :type k: int
-        :rtype: int
-        """
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
         stack = []
         node = root
         while node:

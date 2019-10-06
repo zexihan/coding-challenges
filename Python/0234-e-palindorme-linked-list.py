@@ -1,16 +1,14 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
 
-# Compare the reversed first half with the second half
-class Solution(object):
-    def isPalindrome(self, head):
-        """
-        :type head: ListNode
-        :rtype: bool
-        """
+"""
+Compare the reversed first half with the second half
+"""
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
         rev = None
         slow = fast = head
         while fast and fast.next:

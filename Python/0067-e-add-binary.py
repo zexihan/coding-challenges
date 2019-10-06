@@ -1,10 +1,5 @@
-class Solution(object):
-    def addBinary(self, a, b):
-        """
-        :type a: str
-        :type b: str
-        :rtype: str
-        """
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
         if len(a) == 0: return b
         if len(b) == 0: return a
         if a[-1] == "1" and b[-1] == "1":

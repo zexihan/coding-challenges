@@ -1,11 +1,8 @@
-# Recursion
-class Solution_1(object):
-    def minDistance(self, word1, word2):
-        """
-        :type word1: str
-        :type word2: str
-        :rtype: int
-        """
+"""
+Recursion
+"""
+class Solution_1:
+    def minDistance(self, word1: str, word2: str) -> int:
     
     def match(self, word1, word2, i, j):
         if i == len(word1):
@@ -27,16 +24,13 @@ class Solution_1(object):
         return res
 
 
-# Time: O(len1 * len2)
-# Space: O(len1 * len2)
-# Memorized Search
-class Solution_2(object):
-    def minDistance(self, word1, word2):
-        """
-        :type word1: str
-        :type word2: str
-        :rtype: int
-        """
+"""
+Memorized Search
+Time: O(len1 * len2)
+Space: O(len1 * len2)
+"""
+class Solution_2:
+    def minDistance(self, word1: str, word2: str) -> int:
 
     def match(self, word1, word2, i, j, count):
         if i == len(word1):
@@ -63,16 +57,14 @@ class Solution_2(object):
         
         return res
 
-# Time: O(len1 * len2) 222ms
-# Space: O(len1 * len2)
-# Dynamic Programming
-class Solution_3(object):
-    def minDistance(self, word1, word2):
-        """
-        :type word1: str
-        :type word2: str
-        :rtype: int
-        """
+
+"""
+DP
+Time: O(len1 * len2) 222ms
+Space: O(len1 * len2)
+"""
+class Solution_3:
+    def minDistance(self, word1: str, word2: str) -> int:
         if len(word1) == 0 or len(word2) == 0:
             return len(word2) if len(word1) == 0 else len(word1)
 
@@ -91,7 +83,3 @@ class Solution_3(object):
                     match[i + 1][j + 1] = min(match[i][j], match[i][j + 1], match[i + 1][j]) + 1
         # return the last one
         return match[len(word1)][len(word2)]
-
-if __name__ == "__main__":
-    new_3 = Solution_3()
-    print(new_3.minDistance("head", "sad"))

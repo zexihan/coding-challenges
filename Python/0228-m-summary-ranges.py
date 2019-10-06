@@ -1,12 +1,9 @@
-# Time: O(n)
-# Space: O(n)
-
+"""
+Time: O(n)
+Space: O(n)
+"""
 class Solution:
-    def summaryRanges(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[str]
-        """
+    def summaryRanges(self, nums: List[int]) -> List[str]:
         res = []
         l = 0
         while l < len(nums):

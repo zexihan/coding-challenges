@@ -1,9 +1,5 @@
-class Solution(object):
-    def generateParenthesis(self, n):
-        """
-        :type n: int
-        :rtype: List[str]
-        """
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
         list = []
         self.backtrack(list,"",0,0,n)
         return list

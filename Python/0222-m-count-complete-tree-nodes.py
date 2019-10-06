@@ -6,11 +6,7 @@
 #         self.right = None
 
 class Solution:
-    def countNodes(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+    def countNodes(self, root: TreeNode) -> int:
         if not root: 
             return 0
         depth_left = depth_right = 0

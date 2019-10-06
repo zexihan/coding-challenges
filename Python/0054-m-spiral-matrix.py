@@ -1,9 +1,5 @@
 class Solution:
-    def spiralOrder(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: List[int]
-        """
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         def spiral_coords(r1, c1, r2, c2):
             for c in range(c1, c2 + 1):
                 yield r1, c

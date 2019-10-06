@@ -6,11 +6,7 @@
 #         self.right = None
 
 class Solution:
-    def invertTree(self, root):
-        """
-        :type root: TreeNode
-        :rtype: TreeNode
-        """
+    def invertTree(self, root: TreeNode) -> TreeNode:
         if root is None:
             return None
         

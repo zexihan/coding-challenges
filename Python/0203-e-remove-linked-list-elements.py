@@ -1,19 +1,15 @@
-# Time: O(n)
-# Space: O(1)
 # Definition for singly-linked list.
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-class Solution(object):
-
-    def removeElements(self, head, val):
-        """
-        :type head: ListNode
-        :type val: int
-        :rtype: ListNode
-        """
+"""
+Time: O(n)
+Space: O(1)
+"""
+class Solution:
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
         while head and head.val == val:
             head = head.next
         p = head

@@ -1,9 +1,5 @@
-class Solution_1(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
+class Solution_1:
+    def maxProfit(self, prices: List[int]) -> int:
         hold1, hold2 = float('-inf'), float('-inf')
         release1, release2 = 0, 0
         for i in prices:
@@ -25,12 +21,8 @@ f[k, ii] = max(f[k, ii-1], prices[ii] - prices[jj] + f[k-1, jj]) { jj in range o
 f[0, ii] = 0; 0 times transation makes 0 profit
 f[k, 0] = 0; if there is only one price data point you can't make any money no matter how many times you can trade
 """
-class Solution_2(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
+class Solution_2:
+    def maxProfit(self, prices: List[int]) -> int:
         if len(prices) == 0: return 0
         K = 2 # number of max transation allowed
         maxProf = 0

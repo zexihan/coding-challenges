@@ -16,6 +16,3 @@ class Solution:
                         q.append((newWord, lens + 1))
                         wordSet.remove(newWord)
         return 0
-
-if __name__ == "__main__":
-    print(Solution().ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))

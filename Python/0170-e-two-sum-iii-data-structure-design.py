@@ -1,6 +1,8 @@
-# Time:
-# Space:
-class Solution(object):
+"""
+Time:
+Space:
+"""
+class Solution:
     
     dict = {} # <number, frequency>
     list = [] # for iteration to find
@@ -22,14 +24,3 @@ class Solution(object):
                 if (curKey != target) or (curKey==target and self.dict[target]>=2):
                     return True
         return False
-
-
-if __name__ == '__main__':
-    new = Solution()
-    new.add(3)
-    new.add(1)
-    print(new.find(4))
-    new.add(2)
-    new.add(1)
-    print(new.find(6))
-    print(new.find(2))

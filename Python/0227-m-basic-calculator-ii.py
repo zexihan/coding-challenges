@@ -1,20 +1,16 @@
-# Time: O(n)
-# Space: O(n)
-# assume that the number is in [0,9], cannot pass all the testcases 
 """
+Assume that the number is in [0,9], cannot pass all the testcases 
 ( -> offer into operator stack 
 3 -> offer into number stack
 ) -> pop and calculate until a '(' is met 
 + -> 1. higher precedence met -> offer into stack
      2. lower precedence met -> calculate first
+Time: O(n)
+Space: O(n)
 """
 import operator
-class Solution(object):
-    def calculate(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+class Solution:
+    def calculate(self, s: str) -> int:
         s = list(s.replace(' ', ''))
         valStack = []
         opStack = []
@@ -58,10 +54,3 @@ class Solution(object):
 
     def isLowerThan(self, cur, toPeek):
         return toPeek in ['*', '/'] and cur in ['+', '-']
-
-if __name__ == '__main__':
-    new = Solution()
-    print(new.calculate("(1+(4+5+2)-3)+(6+8)"))
-    print(new.calculate("3"))
-    # print(new.calculate("1*2-3/4+5*6-7*8+9/10"))
-    # print(new.calculate("100000000/1/2/3/4/5/6/7/8/9/10"))

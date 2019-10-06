@@ -1,9 +1,5 @@
 class Solution:
-    def countAndSay(self, n):
-        """
-        :type n: int
-        :rtype: str
-        """
+    def countAndSay(self, n: int) -> str:
         if n < 1: return ''
         res = '1'
         for i in range(1,n):

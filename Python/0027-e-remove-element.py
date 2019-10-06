@@ -1,12 +1,9 @@
-# Time: O(n)
-# Space: O(1)
-class Solution(object):
-    def removeElement(self, nums, val):
-        """
-        :type nums: List[int]
-        :type val: int
-        :rtype: int
-        """
+"""
+Time: O(n)
+Space: O(1)
+"""
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
         index = 0  
         for num in nums:  
             if num != val:  

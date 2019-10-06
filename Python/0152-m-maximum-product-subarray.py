@@ -1,4 +1,4 @@
-'''
+"""
 DP
 max subarray product ends with a[j]: f[j] = max(a[j], max(a[j] * f[j-1], a[j] * g[j-1]) | j > 0)
 min subarray product ends with a[j]: g[j] = min(a[j], min(a[j] * f[j-1], a[j] * g[j-1]) | j > 0)
@@ -6,13 +6,9 @@ j > 0
 f[0], g[0], f[1], g[1], f[2], g[2], ..., f[n-1], g[n-1]
 result is max(f[0], f[1], f[2], ..., f[n-1])
 Time : O(n)
-'''
+"""
 class Solution_1:
-    def maxProduct(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def maxProduct(self, nums: List[int]) -> int:
         n = len(nums) 
         if n == 0:
             return 0
@@ -33,12 +29,9 @@ class Solution_1:
         
         return res
 
+
 class Solution_2:
-    def maxProduct(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def maxProduct(self, nums: List[int]) -> int:
         # store the result that is the max we have found so far
         r = nums[0]
 

@@ -1,12 +1,10 @@
-# Time: O(n)
-# Space: O(n)
-# Two Pass
-class Solution_1(object):
-    def candy(self, ratings):
-        """
-        :type ratings: List[int]
-        :rtype: int
-        """
+"""
+Two Pass
+Time: O(n)
+Space: O(n)
+"""
+class Solution_1:
+    def candy(self, ratings: List[int]) -> int:
         left = [0 for i in range(len(ratings))]
         right = [0 for i in range(len(ratings))]
         left[0] = 1
@@ -31,15 +29,13 @@ class Solution_1(object):
         return sum
 
 
-# Time: O(n)
-# Space: O(1)
-# One Pass
-class Solution_2(object):
-    def candy(self, ratings):
-        """
-        :type ratings: List[int]
-        :rtype: int
-        """
+"""
+One Pass
+Time: O(n)
+Space: O(1)
+"""
+class Solution_2:
+    def candy(self, ratings: List[int]) -> int:
         sum = 1
         prev = 1
         down = 0
@@ -66,10 +62,3 @@ class Solution_2(object):
                 sum += down - prev + 1
         
         return sum
-
-
-if __name__ == "__main__":
-    new_1 = Solution_1()
-    new_2 = Solution_2()
-    print(new_1.candy([0, 4, 5, 5, 2, 1, 0, 0])) # 17
-    print(new_2.candy([0, 4, 5, 5, 2, 1, 0, 0])) # 17

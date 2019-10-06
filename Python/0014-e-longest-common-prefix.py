@@ -1,11 +1,9 @@
-# Time:
-# Space:
-class Solution(object):
-    def longestCommonPrefix(self,strs):
-        """
-        :typestrs: List[str]
-        :rtype: str
-        """
+"""
+Time: O(n)
+Space: O(n)
+"""
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
         prefix = ''
         for z in zip(*strs):
             bag = set(z)

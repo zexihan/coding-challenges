@@ -1,6 +1,8 @@
-# Time: O(logn)
-# Space: O(logn)
-# Recursion
+"""
+Recursion
+Time: O(logn)
+Space: O(logn)
+"""
 class Solution_1:
     def myPow(self, x: float, n: int) -> float:
         if n == 0:
@@ -10,9 +12,11 @@ class Solution_1:
             x = 1 / x
         return self.myPow(x * x, n // 2) if n % 2 == 0 else x * self.myPow(x * x, n // 2)
 
-# Time: O(logn)
-# Space: O(1)
-# Binary a^(1010)2 = a^(1000)2 * a^(10)2
+"""
+Binary a^(1010)2 = a^(1000)2 * a^(10)2
+Time: O(logn)
+Space: O(1)
+"""
 class Solution_2:
     def myPow(self, x: float, n: int) -> float:
         if n < 0:
@@ -26,8 +30,3 @@ class Solution_2:
             tmp *= tmp
             n //= 2
         return res
-
-if __name__ == "__main__":
-    print(Solution_1().myPow(3, 5))
-    print(Solution_2().myPow(3, 5))
-

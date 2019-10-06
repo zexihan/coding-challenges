@@ -1,12 +1,17 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
 
-class Solution(object):
+class Solution:
+    def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
+        res = []
+        self.preOrder(root, 0, res)
+        return res
+
     def preOrder(self, root, level, res):
         if root:
             if len(res) < level + 1:
@@ -17,15 +22,3 @@ class Solution(object):
                 res[level].insert(0, root.val)
             self.preOrder(root.left, level + 1, res)
             self.preOrder(root.right, level + 1, res)
-
-    def zigzagLevelOrder(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[List[int]]
-        """
-        res = []
-        self.preOrder(root, 0, res)
-        return res
-        
-        
-        

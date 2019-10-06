@@ -9,11 +9,7 @@ Time: O(logn), depth of the binary tree
 Space: O(1)
 """
 class Solution:
-    def firstBadVersion(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+    def firstBadVersion(self, n: int) -> int:
         start, end = 1, n
         while start + 1 < end:
             mid = start + (end - start) // 2

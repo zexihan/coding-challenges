@@ -1,11 +1,9 @@
-# Time: O(n)
-# Space: O(1) 
-class Solution(object):
-    def maxArea(self, height):
-        """
-        :type height: List[int]
-        :rtype: int
-        """
+"""
+Time: O(n)
+Space: O(1) 
+"""
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
         size = len(height)
         maxm = 0
         j = 0

@@ -1,10 +1,6 @@
 from collections import deque
-class Solution(object):
-    def letterCombinations(self, digits):
-        """
-        :type digits: str
-        :rtype: List[str]
-        """
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
         if digits is None or len(digits) == 0:
             return []
         ans = deque()
@@ -18,7 +14,3 @@ class Solution(object):
                     ans.append(t+s)
                     print(ans)
         return list(ans)
-
-if __name__ == "__main__":
-    new = Solution()
-    print(new.letterCombinations("23"))

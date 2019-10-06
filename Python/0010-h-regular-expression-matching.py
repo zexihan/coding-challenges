@@ -1,4 +1,5 @@
 """
+Brute Force
 '.' Matches any single character.
 '*' Matches zero or more of the preceding element.
 isMatch("aa","a") → false
@@ -9,15 +10,9 @@ isMatch("aa", ".*") → true
 isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
 """
-# Brute Force
-# 2032 ms
-class Solution_1(object):
-    def isMatch(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: bool
-        """
+
+class Solution_1:
+    def isMatch(self, s: str, p: str) -> bool:
         return self.helper(s, p, 0, 0)
 
     def helper(self, s, p, i, j):
@@ -52,13 +47,8 @@ DP
                         or dp[i][j] = dp[i][j-1]   // in this case, a* counts as single a
                         or dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty
 """
-class Solution_2(object):
-    def isMatch(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: bool
-        """
+class Solution_2:
+    def isMatch(self, s: str, p: str) -> bool:
         if not s or not p:
             return False
         dp = [[False] * (len(p) + 1)] * (len(s) + 1)
@@ -77,9 +67,3 @@ class Solution_2(object):
                     else:
                         dp[i][j] = dp[i-1][j] or dp[i][j-1] or dp[i][j-2]
         return dp[len(s)][len(p)]
-
-
-if __name__ == "__main__":
-    new = Solution_2()
-    print(new.isMatch("aab","c*a*b"))
-    print(new.isMatch("aa","*a"))

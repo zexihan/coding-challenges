@@ -1,10 +1,8 @@
-# DP
-class Solution(object):
-    def generate(self, numRows):
-        """
-        :type numRows: int
-        :rtype: List[List[int]]
-        """
+"""
+DP
+"""
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
         triangle = []
         for rowNum in range(numRows):
             row = [0 for _ in range(rowNum + 1)]

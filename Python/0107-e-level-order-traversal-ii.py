@@ -9,7 +9,7 @@
 BFS
 """
 class Solution:
-    def levelOrderBottom(self, root):
+    def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
         queue = collections.deque([(root, 0)])
         res = []
         while queue:

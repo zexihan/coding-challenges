@@ -1,9 +1,7 @@
-# Time: O(n)
-# Space: O(1)
-class Solution(object):
-    def reverseWords(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+"""
+Time: O(n)
+Space: O(1)
+"""
+class Solution:
+    def reverseWords(self, s: str) -> str:
         return " ".join(s.split()[::-1])

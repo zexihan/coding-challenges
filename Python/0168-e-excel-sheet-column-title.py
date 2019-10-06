@@ -1,9 +1,5 @@
-class Solution_1(object):
-    def convertToTitle(self, n):
-        """
-        :type n: int
-        :rtype: str
-        """
+class Solution_1:
+    def convertToTitle(self, n: int) -> str:
         res = ""
         return self.construct(res, n)
     
@@ -18,12 +14,9 @@ class Solution_1(object):
             return self.construct(res, a-1)
         return self.construct(res, a)
             
-class Solution_2(object):
-    def convertToTitle(self, n):
-        """
-        :type n: int
-        :rtype: str
-        """
+
+class Solution_2:
+    def convertToTitle(self, n: int) -> str:
         res = ""
         while n:
             n -= 1
@@ -31,8 +24,3 @@ class Solution_2(object):
             res = chr(ord("A") + r) + res
             n //= 26
         return res
-
-
-if __name__ == "__main__":
-    new = Solution_2()
-    print(new.convertToTitle(79))

@@ -1,11 +1,5 @@
 class Solution:
-    def shortestDistance(self, words, word1, word2):
-        """
-        :type words: List[str]
-        :type word1: str
-        :type word2: str
-        :rtype: int
-        """
+    def shortestDistance(self, words: List[str], word1: str, word2: str) -> int:
         pos1 = -1
         pos2 = -1
         dist = len(words)
@@ -18,4 +12,3 @@ class Solution:
             if pos1 != -1 and pos2 != -1:
                 dist = min(dist ,abs(pos1 - pos2))
         return dist
-        

@@ -8,22 +8,13 @@ class MedianFinder:
         self.minHeap = []
         self.maxHeap = []
         
-
-    def addNum(self, num):
-        """
-        :type num: int
-        :rtype: void
-        """
+    def addNum(self, num: int) -> None:
         if len(self.minHeap) == len(self.maxHeap):
             heappush(self.maxHeap, -heappushpop(self.minHeap, num))
         else:
             heappush(self.minHeap, -heappushpop(self.maxHeap, -num))
         
-
-    def findMedian(self):
-        """
-        :rtype: float
-        """
+    def findMedian(self) -> float:
         if len(self.minHeap) < len(self.maxHeap):
             return -1.0 * self.maxHeap[0]
         else:

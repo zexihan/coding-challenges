@@ -1,18 +1,15 @@
 # Definition for singly-linked list.
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-# Time: O(n)
-# Space: O(1)
-class Solution(object):
-    def addTwoNumbers(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
+"""
+Time: O(n)
+Space: O(1)
+"""
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         dummy = ListNode(0)
         cur = ListNode(0)
         dummy.next = cur
@@ -39,14 +36,3 @@ class Solution(object):
                 break
 
         return dummy.next
-
-
-if __name__ == "__main__":
-    new = Solution()
-    l1, l1.next, l1.next.next = ListNode(2), ListNode(4), ListNode(3)
-    l2, l2.next, l2.next.next = ListNode(5), ListNode(6), ListNode(4)
-    
-    l3 = new.addTwoNumbers(l1, l2)
-    for i in range(3):
-        print(l3.val)
-        l3 = l3.next

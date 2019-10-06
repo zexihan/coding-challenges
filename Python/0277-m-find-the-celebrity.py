@@ -4,12 +4,8 @@
 # @return a boolean, whether a knows b
 # def knows(a, b):
 
-class Solution():
-    def findCelebrity(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+class Solution:
+    def findCelebrity(self, n: int) -> int:
         if n <= 0:
             return -1
         if n == 1:

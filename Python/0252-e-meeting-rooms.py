@@ -4,15 +4,12 @@
 #         self.start = s
 #         self.end = e
 
-# Time: O(nlogn)
-# Space: O(1)
-
+"""
+Time: O(nlogn)
+Space: O(1)
+"""
 class Solution:
-    def canAttendMeetings(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: bool
-        """
+    def canAttendMeetings(self, intervals: List[Interval]) -> bool:
         intervals.sort(key = lambda x: (x.start, x.end))
         for i in range(len(intervals) - 1):
             if intervals[i].end > intervals[i+1].start:

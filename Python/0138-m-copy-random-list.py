@@ -6,6 +6,7 @@ class Node:
         self.next = next
         self.random = random
 """
+
 """
 Two pass
 Time: O(n)

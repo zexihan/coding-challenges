@@ -1,12 +1,10 @@
-# Time: O(n)
-# Space: O(n)
-# Stack
-class Solution_1(object):
-    def evalRPN(self, tokens):
-        """
-        :type tokens: List[str]
-        :rtype: int
-        """
+"""
+Stack
+Time: O(n)
+Space: O(n)
+"""
+class Solution_1:
+    def evalRPN(self, tokens: List[str]) -> int:
         stack = []
         for i in range(len(tokens)):   
             if tokens[i] not in ["+", "-", "*", "/"]:
@@ -26,16 +24,15 @@ class Solution_1(object):
                 print(stack)
         return stack[0]
 
-# Time: O(n)
-# Space: O(n)
-# Same idea as above, Python version with map and lambda:
+
+"""
+Same idea as above, Python version with map and lambda
+Time: O(n)
+Space: O(n)
+"""
 import operator
-class Solution_2(object):
-    def evalRPN(self, tokens):
-        """
-        :type tokens: List[str]
-        :rtype: int
-        """
+class Solution_2:
+    def evalRPN(self, tokens: List[str]) -> int:
         stack = []
         opt = {'+': lambda x, y: int(x) + int(y), 
               '-': lambda x, y: int(x) - int(y), 
@@ -48,10 +45,3 @@ class Solution_2(object):
                 y, x = stack.pop(), stack.pop()
                 stack.append(opt[i](x, y))
         return int(stack[-1])
-
-
-if __name__ == '__main__':
-    new = Solution_1()
-    print(new.evalRPN(["2", "1", "+", "3", "*"]))
-    print(new.evalRPN(["4", "13", "5", "/", "+"]))
-    print(new.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"]))

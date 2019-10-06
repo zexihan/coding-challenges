@@ -1,10 +1,10 @@
-# Time: O(max(mlogn, nlogn))
 """
 Right or Down of the mid
 Find the valid range for next subproblem
 Not real binary search, Recursion
+Time: O(max(mlogn, nlogn))
 """
-class Solution_1(object):
+class Solution_1:
     def searchMatrix(self, matrix, target):
         """
         :type matrix: List[List[int]]
@@ -35,12 +35,13 @@ class Solution_1(object):
         else:
             return self.binarySearch(matrix, target, startX, midY + 1, endX, endY) or self.binarySearch(matrix, target, midX + 1, startY, endX, midY)
 
-# Time: O(m+n)
+
 """
 Find a position with only one choice
 Top-right point
+Time: O(m+n)
 """
-class Solution_2(object):
+class Solution_2:
     def searchMatrix(self, matrix, target):
         """
         :type matrix: List[List[int]]
@@ -65,9 +66,3 @@ class Solution_2(object):
             else:
                 return True
         return False
-
-if __name__ == "__main__":
-    new_1 = Solution_1()
-    new_2 = Solution_2()
-    print(new_1.searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 5))
-    print(new_2.searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 5))

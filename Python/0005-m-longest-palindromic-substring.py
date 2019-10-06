@@ -1,12 +1,10 @@
-# Time: O(n^2)
-# Space: O(1)
-# Center expansion
+"""
+Center expansion
+Time: O(n^2)
+Space: O(1)
+"""
 class Solution_1:
-    def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    def longestPalindrome(self, s: str) -> str:
         lo, maxLen= 0, 0
         if len(s) < 2:
             return s
@@ -25,20 +23,16 @@ class Solution_1:
             maxLen = k - j -1
         return lo, maxLen
 
-'''
+"""
 DP
 dp[i][j] = 1 if i == j
 dp[i][j] = s[i] == s[j] if j = i + 1
 dp[i][j] = s[i] == s[j] and dp[i+1][j-1] if j > i + 1
 Time: O(n^2)
 Space: O(n^2)
-'''
+"""
 class Solution_2:
-    def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    def longestPalindrome(self, s: str) -> str:
         if len(set(s)) == 1:
             return s
         n = len(s)
@@ -53,9 +47,3 @@ class Solution_2:
                     end = i
             dp[i][i] = 1
         return s[start: end + 1]
-
-if __name__ == "__main__":
-    new = Solution_1()
-    print(new.longestPalindrome("cbbd"))
-    print(new.longestPalindrome("babad"))
-    

@@ -1,11 +1,9 @@
-# Time: O(nlogn + n)
-# Space: O(n)
-class Solution_1(object):
-    def hIndex(self, citations):
-        """
-        :type citations: List[int]
-        :rtype: int
-        """
+"""
+Time: O(nlogn + n)
+Space: O(n)
+"""
+class Solution_1:
+    def hIndex(self, citations: List[int]) -> int:
         n = len(citations)
         citations.sort()
         h = 0
@@ -13,14 +11,12 @@ class Solution_1(object):
             h = max(h, min(n - i, citations[i]))
         return h
 
-# Time: O(nlogn + logn)
-# Space: O(n)
-class Solution_2(object):
-    def hIndex(self, citations):
-        """
-        :type citations: List[int]
-        :rtype: int
-        """
+"""
+Time: O(nlogn + logn)
+Space: O(n)
+"""
+class Solution_2:
+    def hIndex(self, citations: List[int]) -> int:
         n = len(citations)
         citations.sort()
         l, r = 0, n - 1

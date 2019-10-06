@@ -1,17 +1,12 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
-
-class Solution(object):
-    def sumNumbers(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+class Solution:
+    def sumNumbers(self, root: TreeNode) -> int:
         out = []
 
         def dfs(root, val):

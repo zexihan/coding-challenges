@@ -87,5 +87,3 @@ class Solution_3:
             if not helper(set(), course):
                 return False
         return True
-
-

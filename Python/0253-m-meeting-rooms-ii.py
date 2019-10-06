@@ -4,15 +4,12 @@
 #         self.start = s
 #         self.end = e
 
-# Time: O(nlogn)
-# Space: O(n)
-
+"""
+Time: O(nlogn)
+Space: O(n)
+"""
 class Solution_1:
-    def minMeetingRooms(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: int
-        """
+    def minMeetingRooms(self, intervals: List[Interval]) -> int:
         if not intervals:
             return 0
 
@@ -35,11 +32,7 @@ class Solution_1:
         return max_num
 
 class Solution_2:
-    def minMeetingRooms(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: int
-        """
+    def minMeetingRooms(self, intervals: List[Interval]) -> int:
         if not intervals: 
             return 0
         

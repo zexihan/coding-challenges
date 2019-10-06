@@ -6,12 +6,7 @@
 #         self.right = None
 
 class Solution:
-    def closestValue(self, root, target):
-        """
-        :type root: TreeNode
-        :type target: float
-        :rtype: int
-        """
+    def closestValue(self, root: TreeNode, target: float) -> int:
         min_d = float('inf')
         closest = root.val
         while root:

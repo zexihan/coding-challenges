@@ -2,7 +2,7 @@
 Time: O(n)
 Space: O(1)
 """
-class Solution(object):
+class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         cntS = [0] * 256
         cntT = [0] * 256

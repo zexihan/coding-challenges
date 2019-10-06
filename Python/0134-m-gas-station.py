@@ -1,13 +1,9 @@
-# Time: O(n^2)
-# Space: O(1)
-# Time limit exceeded
-class Solution_1(object):
-    def canCompleteCircuit(self, gas, cost):
-        """
-        :type gas: List[int]
-        :type cost: List[int]
-        :rtype: int
-        """
+"""
+Time: O(n^2) (TLE)
+Space: O(1)
+"""
+class Solution_1:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         if sum(gas) < sum(cost):  
             return -1
         gas_left = 0
@@ -28,16 +24,13 @@ class Solution_1(object):
                 return i
         return -1
 
-# Time: O(n)
-# Space: O(1)
-# Deque
-class Solution_2(object):
-    def canCompleteCircuit(self, gas, cost):
-        """
-        :type gas: List[int]
-        :type cost: List[int]
-        :rtype: int
-        """
+"""
+Deque
+Time: O(n)
+Space: O(1)
+"""
+class Solution_2:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         if sum(gas) < sum(cost):  
             return -1
 

@@ -1,9 +1,5 @@
 class Solution:
-    def numSquares(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+    def numSquares(self, n: int) -> int:
         if n == 0:
             return 0
         dp = [float("inf")] * (n+1)

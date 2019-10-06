@@ -1,11 +1,7 @@
 # Time: O(n)
 # Space: O(1)
 class Solution:
-    def removeDuplicates(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """ 
+    def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) == 0: 
             return 0 
         index = 0 

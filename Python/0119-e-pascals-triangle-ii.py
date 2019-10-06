@@ -1,10 +1,8 @@
-# DP
-class Solution(object):
-    def getRow(self, rowIndex):
-        """
-        :type rowIndex: int
-        :rtype: List[int]
-        """
+"""
+DP
+"""
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
         for rowNum in range(rowIndex + 1):
             row = [0 for _ in range(rowNum + 1)]
             row[0], row[-1] = 1, 1

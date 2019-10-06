@@ -1,10 +1,5 @@
-# extremely slow but straightforward
-class Solution_1(object):
-    def minCostII(self, costs):
-        """
-        :type costs: List[List[int]]
-        :rtype: int
-        """
+class Solution_1:
+    def minCostII(self, costs: List[List[int]]) -> int:
         if not costs or not costs[0]:
             return 0
         for i in range(1, len(costs)):
@@ -13,12 +8,8 @@ class Solution_1(object):
         return min(costs[-1])
 
 
-class Solution_2(object):
-    def minCostII(self, costs):
-        """
-        :type costs: List[List[int]]
-        :rtype: int
-        """
+class Solution_2:
+    def minCostII(self, costs: List[List[int]]) -> int:
         if not costs or not costs[0]:
             return 0
         

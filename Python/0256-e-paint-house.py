@@ -1,9 +1,5 @@
-class Solution(object):
-    def minCost(self, costs):
-        """
-        :type costs: List[List[int]]
-        :rtype: int
-        """
+class Solution:
+    def minCost(self, costs: List[List[int]]) -> int:
         if not costs:
             return 0
         for i in range(1, len(costs)):

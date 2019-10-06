@@ -1,5 +1,3 @@
-# Tree
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -11,11 +9,7 @@ class Solution:
     def __init__(self):
         self.count = 0
 
-    def countUnivalSubtrees(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+    def countUnivalSubtrees(self, root: TreeNode) -> int:
         if not root:
             return 0
         self.helper(root)

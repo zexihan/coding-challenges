@@ -1,9 +1,5 @@
 class Solution:
-    def trap(self, height):
-        """
-        :type height: List[int]
-        :rtype: int
-        """
+    def trap(self, height: List[int]) -> int:
         left, right = 0, len(height) - 1
         ans = 0
         left_max, right_max = 0, 0

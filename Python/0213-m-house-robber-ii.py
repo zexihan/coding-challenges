@@ -1,5 +1,5 @@
 """
-Dynamic Programming
+DP
 all cases {
     rob 0 -> max == 7
     rob 4(last) -> max == 9

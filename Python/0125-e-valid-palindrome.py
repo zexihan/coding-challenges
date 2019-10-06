@@ -1,9 +1,5 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """ 
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
         start, end = 0, len(s) - 1
         
         while start < end:
@@ -17,6 +13,3 @@ class Solution(object):
             end -= 1
                 
         return True
-
-run = Solution()
-print(run.isPalindrome("aA"))

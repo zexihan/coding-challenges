@@ -1,9 +1,6 @@
 class WordDistance:
 
-    def __init__(self, words):
-        """
-        :type words: List[str]
-        """
+    def __init__(self, words: List[str]):
         self.dict = {}
         for i, word in enumerate(words):
             if word not in self.dict:
@@ -11,12 +8,7 @@ class WordDistance:
             else:
                 self.dict[word].append(i)
 
-    def shortest(self, word1, word2):
-        """
-        :type word1: str
-        :type word2: str
-        :rtype: int
-        """
+    def shortest(self, word1: str, word2: str) -> int:
         w1Indices = self.dict[word1]
         w2Indices = self.dict[word2]
 

@@ -2,7 +2,7 @@
 Time: O(n)
 Space: O(n)
 """
-class Solution_1(object):
+class Solution_1:
     def isHappy(self, n: int) -> bool:
         cache = set()
         while n != 1:

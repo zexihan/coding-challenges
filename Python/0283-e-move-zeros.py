@@ -1,9 +1,5 @@
 class Solution(object):
-    def moveZeroes(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: void Do not return anything, modify nums in-place instead.
-        """
+    def moveZeroes(self, nums: List[int]) -> None:
         if nums is None or len(nums) == 0:
             return
 

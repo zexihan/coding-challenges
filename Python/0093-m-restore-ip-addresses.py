@@ -1,9 +1,5 @@
 class Solution:
-    def restoreIpAddresses(self, s):
-        """
-        :type s: str
-        :rtype: List[str]
-        """
+    def restoreIpAddresses(self, s: str) -> List[str]:
         if len(s) < 4 or len(s) > 12:
             return []
         result = []

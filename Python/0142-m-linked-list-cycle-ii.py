@@ -7,12 +7,8 @@
 """
 Linked List
 """
-class Solution(object):
-    def detectCycle(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
         slow, fast, entry = head, head, head
         while fast and fast.next:
             slow = slow.next

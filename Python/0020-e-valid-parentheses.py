@@ -1,12 +1,10 @@
-# Time: O(n)
-# Space: O(n)
-# First in, last out -> Stack
+"""
+First in, last out -> Stack
+Time: O(n)
+Space: O(n)
+"""
 class Solution:
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
+    def isValid(self, s: str) -> bool:
         stack = []
         dict = {"]":"[", "}":"{", ")":"("}
         for char in s:

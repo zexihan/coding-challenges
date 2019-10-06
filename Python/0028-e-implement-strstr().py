@@ -1,13 +1,10 @@
-# Time:
-# Space:
-class Solution_1(object):
-    def strStr(self, haystack, needle):
-        """
-	    :type haystack: str
-	    :type needle: str
-	    :rtype: int
-	    """
-        i=0
+"""
+Time: O(mn)
+Space: O(1)
+"""
+class Solution_1:
+    def strStr(self, haystack: str, needle: str) -> int:
+        i = 0
         while i < len(haystack) - len(needle) + 1:
             m, n = i, 0
             while n < len(needle) and haystack[m] == needle[n]:
@@ -18,15 +15,12 @@ class Solution_1(object):
             i += 1
         return -1
 
-# Time:
-# Space:
-class Solution_2(object):
-    def strStr(self, haystack, needle):
-        """
-        :type haystack: str
-        :type needle: str
-        :rtype: int
-        """
+"""
+Time: O(mn)
+Space: O(1)
+"""
+class Solution_2:
+    def strStr(self, haystack: str, needle: str) -> int:
         len_h = len(haystack)
         len_n = len(needle)
         for i in range(0, len_h - len_n + 1):

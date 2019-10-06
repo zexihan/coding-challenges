@@ -1,13 +1,11 @@
-# Time: O(n)
-# Space: O(n)
-# Dynamic Programming
+"""
+DP
+Time: O(n)
+Space: O(n)
+"""
 import math
-class Solution(object):
-    def countPrimes(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+class Solution:
+    def countPrimes(self, n: int) -> int:
         if n <= 2:
             return 0
         
@@ -22,8 +20,3 @@ class Solution(object):
                     if not notPrime[j]:
                         notPrime[j] = True
         return count
-
-
-if __name__ == "__main__":
-    new = Solution()
-    print(new.countPrimes(1500000)) # 6

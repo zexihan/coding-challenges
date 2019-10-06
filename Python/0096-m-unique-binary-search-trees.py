@@ -1,16 +1,12 @@
-# Time: O(n!)
 """
 Recursion
 Recursion rule: 
     count(3) = sum(count(i) * count(3 - i - 1)), i = 0 to 2
     count(n) = sum(count(i) * count(n - i - 1)), i = 0 to 2
+Time: O(n!)
 """
-class Solution_1(object):
-    def numTrees(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+class Solution_1:
+    def numTrees(self, n: int) -> int:
         if n <= 0:
             return 0
         return self.count(n)
@@ -23,14 +19,12 @@ class Solution_1(object):
             sum += self.count(i) * self.count(n-i-1)
         return sum
 
-# Time: O(n)
-# Recursion: Memorized Search
-class Solution_2(object):
-    def numTrees(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+"""
+Recursion: Memorized Search
+Time: O(n)
+"""
+class Solution_2:
+    def numTrees(self, n: int) -> int:
         if n <= 0:
             return 0
         self.root = [0] * (n + 1)
@@ -47,16 +41,12 @@ class Solution_2(object):
         self.root[n] = sum
         return sum
 """
-Dynamic Programming
+DP
 count(3) = sum(count(i) * count(3 - i - 1)), i = 0 to 2
 count[3] = sum(count[i] * count[3 - i - 1]), i = 0 to 2
 """
-class Solution_3(object):
-    def numTrees(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+class Solution_3:
+    def numTrees(self, n: int) -> int:
         if n <= 0:
             return 0
         count = [0] * (n + 1)
@@ -66,11 +56,3 @@ class Solution_3(object):
             for j in range(i):
                 count[i] += count[j] * count[i - j - 1]
         return count[n]
-
-if __name__ == "__main__":
-    new_1 = Solution_1()
-    new_2 = Solution_2()
-    new_3 = Solution_2()
-    print(new_1.numTrees(3))
-    print(new_2.numTrees(3))
-    print(new_3.numTrees(3))

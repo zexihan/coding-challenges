@@ -1,10 +1,5 @@
-class Solution(object):
-    def divide(self, dividend, divisor):
-        """
-        :type dividend: int
-        :type divisor: int
-        :rtype: int
-        """
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
         positive = (dividend < 0) is (divisor < 0)
         dividend, divisor = abs(dividend), abs(divisor)
         res = 0

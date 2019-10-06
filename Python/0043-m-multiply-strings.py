@@ -1,10 +1,5 @@
-class Solution(object):
-    def multiply(self, num1, num2):
-        """
-        :type num1: str
-        :type num2: str
-        :rtype: str
-        """
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
         num1 = num1[::-1]
         num2 = num2[::-1]
         arr = [0 for i in range(len(num1) + len(num2))]

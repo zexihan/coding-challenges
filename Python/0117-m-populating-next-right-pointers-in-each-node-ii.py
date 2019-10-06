@@ -1,19 +1,14 @@
 """
 # Definition for a Node.
-class Node(object):
+class Node:
     def __init__(self, val, left, right, next):
         self.val = val
         self.left = left
         self.right = right
         self.next = next
 """
-
-class Solution_1(object):
-    def connect(self, root):
-        """
-        :type root: Node
-        :rtype: Node
-        """
+class Solution_1:
+    def connect(self, root: 'Node') -> 'Node':
         if not root:
             return None
         if root.left and root.right:
@@ -53,12 +48,8 @@ class Solution_1(object):
         return root
 
 
-class Solution_2(object):
-    def connect(self, root):
-        """
-        :type root: Node
-        :rtype: Node
-        """
+class Solution_2:
+    def connect(self, root: 'Node') -> 'Node':
         if not root:
             return None
         p = root
@@ -80,5 +71,3 @@ class Solution_2(object):
             p = p.next
         self.connect(nextNode)
         return root
-
-        

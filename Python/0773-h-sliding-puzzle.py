@@ -39,6 +39,3 @@ class Solution:
         if s not in visited:
             visited.add(s)
             q.append((s, nzidx))
-
-if __name__ == '__main__':
-    print(Solution().slidingPuzzle([[3, 2, 4], [1, 5, 0]]))

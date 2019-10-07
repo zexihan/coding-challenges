@@ -1,9 +1,5 @@
 class Solution:
-    def lengthLongestPath(self, input):
-        """
-        :type input: str
-        :rtype: int
-        """
+    def lengthLongestPath(self, input: str) -> int:
         stack = [(-1, 0)]
         max_len = 0
         for p in input.split('\n'):

@@ -1,10 +1,11 @@
-# Time: O(nlogn)
-# Space: O(n)
+"""
+Time: O(nlogn)
+Space: O(n)
+"""
 class Solution:
-    def wiggleSort(self, nums):
+    def wiggleSort(self, nums: List[int]) -> None:
         """
-        :type nums: List[int]
-        :rtype: void Do not return anything, modify nums in-place instead.
+        Do not return anything, modify nums in-place instead.
         """
         temp = sorted(nums)
         s, t = (len(nums) + 1) // 2, len(nums)

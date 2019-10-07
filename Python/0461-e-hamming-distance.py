@@ -1,8 +1,3 @@
-class Solution(object):
-    def hammingDistance(self, x, y):
-        """
-        :type x: int
-        :type y: int
-        :rtype: int
-        """
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
         return bin(x^y)[2:].count("1")

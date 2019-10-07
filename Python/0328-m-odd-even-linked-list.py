@@ -5,11 +5,7 @@
 #         self.next = None
 
 class Solution:
-    def oddEvenList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
+    def oddEvenList(self, head: ListNode) -> ListNode:
         if not head:
             return
         odd = head

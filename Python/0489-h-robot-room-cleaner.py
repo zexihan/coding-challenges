@@ -31,11 +31,7 @@
 #        """
 
 class Solution:
-    def cleanRoom(self, robot):
-        """
-        :type robot: Robot
-        :rtype: None
-        """
+    def cleanRoom(self, robot: Robot) -> None:
         def goBack():
             robot.turnRight()
             robot.turnRight()

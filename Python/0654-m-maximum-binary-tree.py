@@ -1,11 +1,9 @@
-# Time: O(n^2)
-# Space: O(n)
+"""
+Time: O(n^2)
+Space: O(n)
+"""
 class Solution:
-    def constructMaximumBinaryTree(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: TreeNode
-        """
+    def constructMaximumBinaryTree(self, nums: List[int]) -> TreeNode:
         return self.construct(nums, 0, len(nums))
     
     def construct(self, nums, l, r):

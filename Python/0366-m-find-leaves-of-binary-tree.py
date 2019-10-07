@@ -4,6 +4,7 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
+
 """
 DFS + Hash Table
 当前node的高度是 1 + Max（height(node.left), height(node.right)

@@ -1,9 +1,5 @@
 class Solution:
-    def islandPerimeter(self, grid):
-        """
-        :type grid: List[List[int]]
-        :rtype: int
-        """
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
         height = len(grid)
         weight = len(grid[0]) if height else 0
         res = 0

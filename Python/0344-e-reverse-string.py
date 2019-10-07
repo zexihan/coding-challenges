@@ -1,7 +1,6 @@
 class Solution:
-    def reverseString(self, s):
+    def reverseString(self, s: List[str]) -> None:
         """
-        :type s: str
-        :rtype: str
+        Do not return anything, modify s in-place instead.
         """
         return s[::-1]

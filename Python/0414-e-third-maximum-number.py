@@ -1,9 +1,5 @@
-class Solution(object):
-    def thirdMax(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
         v = [float("-inf"), float("-inf"), float("-inf")]
         for num in nums:
             if num not in v:

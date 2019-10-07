@@ -1,5 +1,3 @@
-# Tree, Recursion
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -7,12 +5,11 @@
 #         self.left = None
 #         self.right = None
 
+"""
+Tree, Recursion
+"""
 class Solution:
-    def longestUnivaluePath(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+    def longestUnivaluePath(self, root: TreeNode) -> int:
         if not root: return 0
         return max(self.longestLength(root.left, root.val) + self.longestLength(root.right, root.val),
                    self.longestUnivaluePath(root.left),

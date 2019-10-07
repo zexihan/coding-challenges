@@ -1,17 +1,13 @@
-'''
+"""
 DP
 dp[i][j] = 1 if i == j
 dp[i][j] = s[i] == s[j] if j = i + 1
 dp[i][j] = s[i] == s[j] and dp[i+1][j-1] if j > i + 1
 Time: O(n^2)
 Space: O(n^2)
-'''
+"""
 class Solution:
-    def countSubstrings(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+    def countSubstrings(self, s: str) -> int:
         n = len(s)
         count = 0
         dp = [[0] * n for _ in range(n)]

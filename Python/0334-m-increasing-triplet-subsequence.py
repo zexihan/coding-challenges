@@ -1,11 +1,9 @@
-# Time: O(n)
-# Space: O(1)
+"""
+Time: O(n)
+Space: O(1)
+"""
 class Solution:
-    def increasingTriplet(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+    def increasingTriplet(self, nums: List[int]) -> bool:
         first, second = float('inf'), float('inf')
         for num in nums:
             if num <= first:

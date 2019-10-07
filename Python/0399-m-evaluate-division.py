@@ -1,13 +1,10 @@
-# Time: O(e+q*e)
-# Space: O(e)
+"""
+Time: O(e+q*e)
+Space: O(e)
+"""
+import collections
 class Solution:
-    def calcEquation(self, equations, values, queries):
-        """
-        :type equations: List[List[str]]
-        :type values: List[float]
-        :type queries: List[List[str]]
-        :rtype: List[float]
-        """
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         def divide(x, y, visited):
             if x == y: return 1.0
             visited.add(x)

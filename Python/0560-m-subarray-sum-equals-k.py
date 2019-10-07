@@ -1,12 +1,10 @@
-# Time: O(n)
-# Space: O(n)
-class Solution(object):
-    def subarraySum(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: int
-        """
+"""
+Time: O(n)
+Space: O(n)
+"""
+import collections
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
         d = collections.defaultdict(int)
         d[0] = 1
         prefixSum = 0

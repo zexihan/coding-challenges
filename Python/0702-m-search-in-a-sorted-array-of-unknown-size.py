@@ -2,12 +2,7 @@
 Binary Search
 """
 class Solution:
-    def search(self, reader, target):
-        """
-        :type reader: ArrayReader
-        :type target: int
-        :rtype: int
-        """
+    def search(self, reader: ArrayReader, target: int) -> int:
         index = 1
         while reader.get(index - 1) < target:
             index *= 2

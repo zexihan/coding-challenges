@@ -1,9 +1,5 @@
 class Solution:
-    def maxKilledEnemies(self, grid):
-        """
-        :type grid: List[List[str]]
-        :rtype: int
-        """
+    def maxKilledEnemies(self, grid: List[List[str]]) -> int:
         if not grid:
             return 0
 

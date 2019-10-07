@@ -1,10 +1,8 @@
-# DP
+"""
+DP
+"""
 class Solution:
-    def countBits(self, num):
-        """
-        :type num: int
-        :rtype: List[int]
-        """
+    def countBits(self, num: int) -> List[int]:
         f = [0 for i in range(num + 1)]
         f[0] = 0
         for i in range(1, num+1):

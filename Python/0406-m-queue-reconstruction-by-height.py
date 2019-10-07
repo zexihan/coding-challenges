@@ -1,9 +1,5 @@
 class Solution_1:
-    def reconstructQueue(self, people):
-        """
-        :type people: List[List[int]]
-        :rtype: List[List[int]]
-        """
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
         if not people:
             return []
         
@@ -30,11 +26,7 @@ class Solution_1:
 
 
 class Solution_2:
-    def reconstructQueue(self, people):
-        """
-        :type people: List[List[int]]
-        :rtype: List[List[int]]
-        """
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
         t = sorted(people, key=lambda x: (-x[0], x[1]))
 
         res = []

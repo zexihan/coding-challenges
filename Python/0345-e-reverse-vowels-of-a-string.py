@@ -1,11 +1,9 @@
-# Time: O(n)
-# Space: O(n)
+"""
+Time: O(n)
+Space: O(n)
+"""
 class Solution_1:
-    def reverseVowels(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    def reverseVowels(self, s: str) -> str:
         res = list(s)
         vowels = []
         for i in range(len(res)):
@@ -15,14 +13,12 @@ class Solution_1:
             res[vowels[j][0]] = vowels[len(vowels) - j - 1][1]
         return ''.join(res)
 
-# Time: O(n)
-# Space: O(1)
+"""
+Time: O(n)
+Space: O(1)
+"""
 class Solution_2:
-    def reverseVowels(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    def reverseVowels(self, s: str) -> str:
         vowels = set(list('aeiouAEIOU'))
         s = list(s)
         front = 0

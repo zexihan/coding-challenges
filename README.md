@@ -1,2 +1,1 @@
-# LeetCode
-My LeetCode solutions
+# Coding Challenges

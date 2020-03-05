@@ -28,9 +28,7 @@ public:
                 {
                     dirs.push_back(dir);
                 }
-                
             }
-
             i = j;
         }
 
@@ -44,8 +42,6 @@ public:
             for (auto dir : dirs)
                 out << "/" << dir;
         }
-
         return out.str();
-        
     }
 };

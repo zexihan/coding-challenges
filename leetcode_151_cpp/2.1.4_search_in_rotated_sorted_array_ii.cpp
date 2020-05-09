@@ -1,29 +1,31 @@
 /*
-Binary Search
-Time: O(logn)
+Time: O(n)
 Space: O(1)
 */
 class Solution {
-    public: 
-        int search(const vector<int>& nums, int target) {
+    public:
+        bool search(const vector<int>& nums, int target) {
             int first = 0, last = nums.size();
             while (first != last) {
                 const int mid = first + (last - first) / 2;
                 if (nums[mid] == target)
-                    return mid;
+                    return true;
                 if (nums[first] < nums[mid]) {
-                    if (nums[first] <= target && target < nums[mid])
+                    if (nums[first] < target && target < nums[mid])
                         last = mid;
                     else
                         first = mid + 1;
                 }
-                else {
+                else if (nums[first > nums[mid]]) {
                     if (nums[mid] < target && target < nums[last - 1])
                         first = mid + 1;
                     else
                         last = mid;
                 }
+                else
+                    // skip duplicate one
+                    first++;
             }
-            return -1;
+            return false;
         }
 };

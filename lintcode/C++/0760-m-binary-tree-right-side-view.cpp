@@ -14,20 +14,20 @@
  */
 
 class Solution {
-    public:
-        vector<int> rightSideView(TreeNode * root) {
-            dfs(root, 0);
-            return view;
-        }
+public:
+    vector<int> rightSideView(TreeNode * root) {
+        dfs(root, 0);
+        return view;
+    }
 
-    private:
-        vector<int> view;
-        void dfs(TreeNode * node, int depth) {
-            if (node != NULL) {
-                if (depth == view.size())
-                    view.push_back(node->val);
-                dfs(node->right, depth + 1);
-                dfs(node->left, depth + 1);
-            }
+private:
+    vector<int> view;
+    void dfs(TreeNode * node, int depth) {
+        if (node != NULL) {
+            if (depth == view.size())
+                view.push_back(node->val);
+            dfs(node->right, depth + 1);
+            dfs(node->left, depth + 1);
         }
+    }
 };

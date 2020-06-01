@@ -11,7 +11,7 @@ public:
                 vector<int> result;
                 result.push_back(hash[sum] + 1);
                 result.push_back(i);
-                return result
+                return result;
             }
             hash[sum] = i;
         }

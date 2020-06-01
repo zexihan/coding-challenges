@@ -30,5 +30,6 @@ public:
                 continue;
             nums[index++] = nums[i];
         }
+        return index;
     }
 };

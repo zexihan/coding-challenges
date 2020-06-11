@@ -1,10 +1,6 @@
-/*
-Time: O(n)
-Space: O(1)
-*/
 class Solution {
 public:
-    bool search(const vector<int>& nums, int target) {
+    bool search(vector<int>& nums, int target) {
         int left = 0, right =  nums.size() - 1;
         
         while(left <= right) {

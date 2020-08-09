@@ -1,7 +1,7 @@
 """
 DFS
 Time: O(n! * n)
-Space: O(n)
+Space: O(n!)
 """
 class Solution_1:
     def permute(self, nums: List[int]) -> List[List[int]]:

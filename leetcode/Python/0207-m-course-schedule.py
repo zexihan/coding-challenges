@@ -27,7 +27,7 @@ class Solution_1:
 
 """
 Topological sort, DFS
-Time: O(n)
+Time: O(n^2)
 Space: O(n)
 """
 class Solution_2:

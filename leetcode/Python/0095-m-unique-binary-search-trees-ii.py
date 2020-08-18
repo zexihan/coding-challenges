@@ -7,7 +7,7 @@
 
 class Solution:
     def generateTrees(self, n: int) -> List[TreeNode]:
-        if not n:
+        if n == 0:
             return []
         return self.generate_trees(1, n)
         

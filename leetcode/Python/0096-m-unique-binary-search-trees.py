@@ -7,12 +7,10 @@ Time: O(n!)
 """
 class Solution_1:
     def numTrees(self, n: int) -> int:
-        if n <= 0:
-            return 0
         return self.count(n)
 
     def count(self, n):
-        if n == 0 or n == 1:
+        if n == 1:
             return 1
         sum = 0
         for i in range(n):
@@ -25,13 +23,11 @@ Time: O(n)
 """
 class Solution_2:
     def numTrees(self, n: int) -> int:
-        if n <= 0:
-            return 0
         self.root = [0] * (n + 1)
         return self.count(n)
 
     def count(self, n):
-        if n == 0 or n == 1:
+        if n == 1:
             return 1
         if self.root[n] != 0:
             return self.root[n]
@@ -44,11 +40,10 @@ class Solution_2:
 DP
 count(3) = sum(count(i) * count(3 - i - 1)), i = 0 to 2
 count[3] = sum(count[i] * count[3 - i - 1]), i = 0 to 2
+Time: O(n^2)
 """
 class Solution_3:
     def numTrees(self, n: int) -> int:
-        if n <= 0:
-            return 0
         count = [0] * (n + 1)
         count[0] = 1
 

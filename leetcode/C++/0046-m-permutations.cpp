@@ -30,24 +30,16 @@ public:
 
 // DFS + Swap
 class Solution {
-public:
-    void swap(vector<int>& nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
-    }
-        
+public: 
     void helper(vector<int>& nums, int pos, vector<vector<int>>& res) {
         if (pos == nums.size()) {
             res.push_back(nums);
             return;
         }
         for (int i = pos; i < nums.size(); i++) {
-            // swap: fix a position for going down
-            swap(nums, i, pos);
+            swap(nums[i], nums[pos]);
             helper(nums, pos + 1, res);
-            // swap back: free a position for going right
-            swap(nums, i, pos);
+            swap(nums[i], nums[pos]);
         }
     }
     

@@ -1,6 +1,5 @@
 class Solution {
 public:
-       
     void helper(vector<int>& nums, vector<int>& path, vector<bool>& visited, vector<vector<int>>& res) {
         if (path.size() == nums.size()) {
             res.push_back(path);
@@ -18,7 +17,6 @@ public:
         }
     }
     
-    
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         vector<vector<int>> res;
         if (nums.size() == 0)
@@ -35,12 +33,6 @@ public:
 // DFS + Swap
 class Solution {
 public:
-    void swap(vector<int>& nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
-    }
-    
     void helper(vector<int>& nums, int pos, vector<vector<int>>& res) {
         if (pos == nums.size()) {
             res.push_back(nums);
@@ -50,13 +42,12 @@ public:
         for (int i = pos; i < nums.size(); i++) {
             if (used.find(nums[i]) == used.end()) {
                 used.insert(nums[i]);
-                swap(nums, i, pos);
+                swap(nums[i], nums[pos]);
                 helper(nums, pos + 1, res);
-                swap(nums, i, pos);
+                swap(nums[i], nums[pos]);
             }
         }
     }
-    
     
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         vector<vector<int>> res;

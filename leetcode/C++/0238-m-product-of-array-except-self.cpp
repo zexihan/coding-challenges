@@ -1,3 +1,4 @@
+// Prefix and suffix product
 // Time: O(n)
 // Space: O(n)
 class Solution {
@@ -20,6 +21,7 @@ public:
 };
 
 
+// Optimize space complexity
 // Time: O(n)
 // Space: O(1)
 class Solution {
@@ -28,13 +30,15 @@ public:
         int n = nums.size();
         vector<int> res(n, 1);
         
-        for (int i = 1; i < n; i++) {
-            res[i] = nums[i - 1] * res[i - 1];
+        int prefix = 1;
+        for (int i = 0; i < n; i++) {
+            res[i] *= prefix;
+            prefix *= nums[i];
         }
-        int right = 1;
+        int suffix = 1;
         for (int i = n - 1; i > -1; i--) {
-            res[i] *= right;
-            right *= nums[i];
+            res[i] *= suffix;
+            suffix *= nums[i];
         }
         return res;
     }

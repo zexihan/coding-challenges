@@ -30,3 +30,22 @@ public:
         return max(f[n][1], max(f[n][3], f[n][5]));
     }
 };
+
+// Simulation
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int t1cost = INT_MAX, 
+            t2cost = INT_MAX;
+        int t1profit = 0,
+            t2profit = 0;
+        
+        for (int price : prices) {
+            t1cost = min(t1cost, price);
+            t1profit = max(t1profit, price - t1cost);
+            t2cost = min(t2cost, price - t1profit);
+            t2profit = max(t2profit, price - t2cost);
+        }
+        return t2profit;
+    }
+};

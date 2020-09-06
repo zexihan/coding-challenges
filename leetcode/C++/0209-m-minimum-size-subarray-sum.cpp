@@ -1,24 +1,22 @@
-// Two pointers
+// Prefix sum
 // Time: O(n)
 // Space: O(1)
 class Solution {
 public:
     int minSubArrayLen(int s, vector<int>& nums) {
         int n = nums.size();
-        int j = 0;
-        int curSum = 0;
-        int res = INT_MAX;
-        for (int i = 0; i < n; i++) {
-            while (j < n && curSum < s) {
-                curSum += nums[j];
+        int sum = 0, res = INT_MAX;
+        int i = 0, j = 0;
+        for (; i < n; i++) {
+            while (j < n && sum < s) {
+                sum += nums[j];
                 j++;
             }
-            
-            if (curSum >= s) 
+            if (sum >= s) 
                 res = min(res, j - i);
-            
-            curSum -= nums[i];
+            sum -= nums[i];
         }
-        return res != INT_MAX ? res : 0;
+        if (res == INT_MAX) return 0;
+        return res;
     }
 };

@@ -39,25 +39,27 @@ public:
     }
 };
 
-// Deque
+// Deque: monoqueue
 class Solution {
 public:
-    int shortestSubarray(vector<int> A, int K) {
-        int N = A.size(), res = N + 1;
-        deque<int> d;
-        for (int i = 0; i < N; i++) {
-            if (i > 0)
-                A[i] += A[i - 1];
-            if (A[i] >= K)
-                res = min(res, i + 1);
-            while (d.size() && A[i] - A[d.front()] >= K) {
-                res = min(res, i - d.front());
-                d.pop_front();
+    int shortestSubarray(vector<int>& A, int K) {
+        int n = A.size();
+        vector<int> prefix_sum(n+1, 0);
+        for (int i = 0; i < n; i++)
+            prefix_sum[i + 1] = prefix_sum[i] + A[i];
+        
+        int res = n + 1;
+        deque<int> dq;
+        
+        for (int i = 0; i <= n; i++) {
+            while (dq.size() && prefix_sum[i] <= prefix_sum[dq.back()])
+                dq.pop_back();
+            while (dq.size() && prefix_sum[i] - prefix_sum[dq.front()] >= K) {
+                res = min(res, i - dq.front());
+                dq.pop_front();
             }
-            while (d.size() && A[i] <= A[d.back()])
-                d.pop_back();
-            d.push_back(i);
+            dq.push_back(i);
         }
-        return res <= N ? res : -1;
+        return res <= n ? res : -1;
     }
 };

@@ -8,53 +8,41 @@
  * };
  */
 class Codec {
-public:
-
-    // Encodes a tree to a single string.
-    string serialize(TreeNode* root) {
-        if (root == nullptr) return "";
-        string s = "";
-        myserialize(root, s);
-        return s;
-    }
-
-    // Decodes your encoded data to tree.
-    TreeNode* deserialize(string data) {
-        if (data == "") return nullptr;
-        return mydeserialize(data, INT_MIN, INT_MAX);
-    }
-
 private:
     void myserialize(TreeNode* root, string& s) {
-        if (root == nullptr) return;
+        if (!root) return;
         s += to_string(root->val) + ",";
         myserialize(root->left, s);
         myserialize(root->right, s);
     }
     
-    TreeNode* mydeserialize(string& data, int min, int max) {
-        if (data.size() == 0) 
-            return nullptr;
-        
-        int pos = 0;
-        int val = helper(data, pos);
-        if (val < min || val > max)
-            return nullptr;
+    TreeNode* mydeserialize(string& data, int minV, int maxV) {
+        if (data.length() == 0) return NULL;
+        int pos = data.find(",");
+        int val = stoi(data.substr(0, pos));
+        if (val < minV || val > maxV) return NULL;
         
         TreeNode* node = new TreeNode(val);
-        
         data = data.substr(pos + 1);
-        
-        node->left = mydeserialize(data, min, node->val);
-        node->right = mydeserialize(data, node->val, max);
-        
+        node->left = mydeserialize(data, minV, val);
+        node->right = mydeserialize(data, val, maxV);
         return node;
     }
     
-    int helper(string& data, int& pos) {
-        pos = data.find(",");
-        int val = stoi(data.substr(0, pos));
-        return val;
+public:
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        string s = "";
+        if (!root) return s;
+        myserialize(root, s);
+        return s;
+        
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        if (data == "") return NULL;
+        return mydeserialize(data, INT_MIN, INT_MAX);
     }
 };
 

@@ -1,27 +1,28 @@
-void mergeSort(vector<int> &a, vector<int> &T, int left, int right) {
-    if (right - left == 1) 
-        return;
+void mergeSort(vector<int> &a, int left, int right) {
+    if (left >= right) return;
     
-    int mid = left + right >> 1;
-    mergeSort(a, T, left, mid);
-    mergeSort(a, T, mid, right);
+    int mid = (left + right) / 2;
+    mergeSort(a, left, mid);
+    mergeSort(a, mid + 1, right);
+    
+    vector<int> temp(right - left + 1);
+    int i = left, j = mid + 1;
+    int cur = 0;
 
-    int tmid = left + right >> 1;
-    int tleft = left;
-    int i = left;
-
-    while (tleft < mid || tmid < right) {
-        if (tmid >= right || (tleft < mid && a[tleft <= a[tmid]]))
-            T[i++] = a[tleft++];
+    while (i <= mid && j <= right) {
+        if (a[i] <= a[j])
+            temp[cur] = a[i++];
         else
-            T[i++] = a[tmid++];
+            temp[cur] = a[j++];
+        cur++;
     }
-    for (int i = left; i < right; i++)
-        a[i] = T[i];
+    while (i <= mid) temp[cur++] = a[i++];
+    while (j <= right) temp[cur++] = a[j++];
+
+    for (int k = 0; k < temp.size(); k++)
+        a[left + k] = temp[k];
 }
 
 void mSort(vector<int> &a) {
-    int len = a.size();
-    vector<int> T(len);
-    mergeSort(a, T, 0, len);
+    mergeSort(a, 0, a.size() - 1);
 }

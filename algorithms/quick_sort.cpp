@@ -1,21 +1,26 @@
 int partition(vector<int> &a, int left, int right) {
-    int pivot = a[right];
-    int i = left - 1;
-    for (int j = left; j < right; j++) {
-        if (a[j] <= pivot) {
-            i++;
-            swap(a[i], a[j]);
+    int random = rand() % (right - left + 1) + left;
+    swap(a[random], a[left]);
+    int pivot = a[left];
+    
+    int lo = left;
+    int cur = left + 1;
+    while (cur <= right) {
+        if (a[cur] <= pivot) {
+            swap(a[lo + 1], a[cur]);
+            lo++;
         }
+        cur++;
     }
-    swap(a[i + 1], a[right]);
-    return i + 1;
+    swap(a[lo], a[left]);
+    return lo;
 }
 
 void quickSort(vector<int> &a, int left, int right) {
     if (left < right) {
-        int mid = partition(a, left, right);
-        quickSort(a, left, mid - 1);
-        quickSort(a, mid + 1, right);
+        int p = partition(a, left, right);
+        quickSort(a, left, p - 1);
+        quickSort(a, p + 1, right);
     }
 }
 

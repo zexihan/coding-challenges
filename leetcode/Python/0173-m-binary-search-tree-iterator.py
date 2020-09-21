@@ -8,7 +8,6 @@
 class BSTIterator:
 
     def __init__(self, root: TreeNode):
-        def __init__(self, root: TreeNode):
         self.stack = []
         while root:
             self.stack.append(root)

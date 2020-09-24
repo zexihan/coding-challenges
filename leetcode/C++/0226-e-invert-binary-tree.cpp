@@ -18,9 +18,7 @@ public:
         while(!q.empty()) {
             TreeNode* n = q.front();
             q.pop();
-            TreeNode* temp = n->left;
-            n->left = n->right;
-            n->right = temp;
+            swap(n->left, n->right);
             if (n->left) q.push(n->left);
             if (n->right) q.push(n->right);
         }

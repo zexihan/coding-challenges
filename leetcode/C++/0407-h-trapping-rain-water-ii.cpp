@@ -25,7 +25,7 @@ public:
             cell c = pq.top();
             pq.pop();
             int x = c.second / n, y = c.second % n;
-            for (auto d : dirs) {
+            for (auto& d : dirs) {
                 int nx = x + d[0];
                 int ny = y + d[1];
                 int idx = nx*n+ny;

@@ -28,6 +28,14 @@ public:
         return slow;
     }
 };
+.....A a
+.....A.......B a + b
+
+slow B -> (a + b) -> B
+slow B -> a -> A
+
+slow head -> a -> A
+fast B -> a -> A
 
 
 class Solution {

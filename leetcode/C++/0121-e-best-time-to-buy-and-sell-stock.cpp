@@ -8,7 +8,7 @@ public:
         int prefix_min = prices[0];
         for (int i = 1; i < n; ++i) {
             res = max(res, prices[i] - prefix_min);
-            prefix_min = min(minV, prices[i]);
+            prefix_min = min(prefix_min, prices[i]);
         }
         return res;
     }

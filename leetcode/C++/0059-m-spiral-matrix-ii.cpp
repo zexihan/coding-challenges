@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
         vector<vector<int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        vector<int> steps = {n , n-1};
+        vector<int> steps = {n, n-1};
         vector<vector<int>> matrix(n, vector<int>(n));
         int dIdx = 0, sIdx = 0;
         int r = 0, c = -1;

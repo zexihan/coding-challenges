@@ -4,7 +4,6 @@
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        if (nums.size() == 0) return -1;
         int l = 0, r = nums.size() - 1;
         while (l < r - 1) {
             if (nums[l] < nums[r])

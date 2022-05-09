@@ -4,25 +4,16 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        unordered_map<int, int> counter;
+        unordered_map<int, int> counts;
+        int majority = 0, cnt = 0;
         for (int num : nums) {
-            if (counter.find(num) == counter.end()) {
-                counter[num] = 1;  
-            } else {
-                counter[num]++;
+            ++counts[num];
+            if (counts[num] > cnt) {
+                majority = num;
+                cnt = counts[num];
             }
         }
-        int res;
-        int mj_cnt = 0;
-        auto map_it = counter.cbegin();
-        while (map_it != counter.cend()) {
-            if (map_it->second > mj_cnt) {
-                mj_cnt = map_it->second;
-                res = map_it->first;
-            }
-            map_it++;
-        }
-        return res;
+        return majority;
     }
 };
 

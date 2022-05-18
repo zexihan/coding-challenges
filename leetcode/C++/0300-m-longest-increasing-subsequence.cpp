@@ -5,14 +5,13 @@ public:
         int n = nums.size();
         if (n == 0) return 0;
         vector<int> f(n, 1);
-        int i, j;
         int res = 0;
-        for (int j = 0; j < n; j++) {
-            for (i = 0; i < j; ++i) {
-                if (nums[i] < nums[j])
-                    f[j] = max(f[j], f[i] + 1);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; ++j) {
+                if (nums[j] < nums[i])
+                    f[i] = max(f[i], f[j] + 1);
             }
-            res = max(res, f[j]);
+            res = max(res, f[i]);
         }
         return res;
     }

@@ -1,3 +1,5 @@
+// Time: O(n)
+// Space: O(k)
 class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {

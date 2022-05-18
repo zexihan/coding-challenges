@@ -1,5 +1,6 @@
 // Priority queue
-// Time: O(Nlogk)
+// Time: O(NlogN)
+// Space: O(k)
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -15,6 +16,7 @@ public:
 
 // Quick select
 // Time: O(N)
+// Space: O(logN)
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -25,27 +27,23 @@ public:
                 kth = nums[idx];
                 break;
             }
-            if (idx < k - 1) {
+            if (idx < k - 1)
                 left = idx + 1;
-            } else {
+            else
                 right = idx - 1;
-            }
         }
         return kth;
     }
-private:
+
     int partition(vector<int>& nums, int left, int right) {
         int pivot = nums[left], l = left + 1, r = right;
         while (l <= r) {
-            if (nums[l] < pivot && nums[r] > pivot) {
+            if (nums[l] < pivot && nums[r] > pivot)
                 swap(nums[l++], nums[r--]);
-            }
-            if (nums[l] >= pivot) {
+            if (nums[l] >= pivot)
                 l++;
-            }
-            if (nums[r] <= pivot) {
+            if (nums[r] <= pivot)
                 r--;
-            }
         }
         swap(nums[left], nums[r]);
         return r;

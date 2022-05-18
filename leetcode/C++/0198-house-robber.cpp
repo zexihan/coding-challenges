@@ -5,13 +5,13 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int prevMax = 0;
-        int curMax = 0;
+        int prev_max = 0;
+        int curr_max = 0;
         for (int x : nums) {
-            int tmp = curMax;
-            curMax = max(prevMax + x, curMax);
-            prevMax = tmp;
+            int tmp = curr_max;
+            curr_max = max(prev_max + x, curr_max);
+            prev_max = tmp;
         }
-        return curMax;
+        return curr_max;
     }
 };

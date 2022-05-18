@@ -1,17 +1,6 @@
 // DP
 class Solution {
 public:
-    int helper(vector<int>& nums) {
-        int prevMax = 0;
-        int curMax = 0;
-        for (int x : nums) {
-            int tmp = curMax;
-            curMax = max(prevMax + x, curMax);
-            prevMax = tmp;
-        }
-        return curMax;
-    }
-    
     int rob(vector<int>& nums) {
         int n = nums.size();
         if (n == 0) return 0;
@@ -28,5 +17,16 @@ public:
         res = max(res, helper(A));
         
         return res;
+    }
+
+    int helper(vector<int>& nums) {
+        int prev_max = 0;
+        int curr_max = 0;
+        for (int x : nums) {
+            int tmp = curr_max;
+            curr_max = max(prev_max + x, curr_max);
+            prev_max = tmp;
+        }
+        return curr_max;
     }
 };

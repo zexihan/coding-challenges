@@ -6,7 +6,7 @@ public:
         int sum = 0, res = INT_MIN;
         for (int i = 0; i < n; i++) {
             sum += nums[i];
-            if (mp.find(sum - k) != mp.end())
+            if (mp.find(1L* sum - k) != mp.end())
                 res = max(res, i - mp[sum - k]);
             if (mp.find(sum) == mp.end())
                 mp[sum] = i;

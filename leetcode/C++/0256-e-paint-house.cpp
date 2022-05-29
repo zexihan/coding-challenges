@@ -7,7 +7,7 @@ public:
         
         vector<vector<int>> f(n + 1, vector<int>(3, INT_MAX));
         f[0][0] = 0, f[0][1] = 0, f[0][2] = 0;
-        for (int i = 1; i<= n; i++) {
+        for (int i = 1; i <= n; i++) {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++) {
                     if (j != k)

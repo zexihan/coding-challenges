@@ -1,4 +1,6 @@
 // DP
+// Time: O(nm)
+// Space: O(nm)
 class Solution {
 public:
     int maxKilledEnemies(vector<vector<char>>& grid) {
@@ -31,7 +33,6 @@ public:
                     down[i][j] = 0;
                     continue;
                 }
-                    
                 down[i][j] = grid[i][j] == 'E' ? 1 : 0;
                 if (i < m - 1)
                     down[i][j] += down[i+1][j];

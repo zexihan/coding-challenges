@@ -1,3 +1,5 @@
+// 1. 对于每个房屋，要么用前面的暖气，要么用后面的，二者取近的，得到距离；
+// 2. 对于所有的房屋，选择最大的上述距离。
 class Solution {
 public:
     int findRadius(vector<int>& houses, vector<int>& heaters) {

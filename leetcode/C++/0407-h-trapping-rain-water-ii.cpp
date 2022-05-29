@@ -6,7 +6,7 @@ public:
         int m = heightMap.size();
         if (m == 0) return 0;
         int n = heightMap[0].size();
-        vector<int> visited(m*n, false);
+        vector<bool> visited(m*n, false);
         
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
